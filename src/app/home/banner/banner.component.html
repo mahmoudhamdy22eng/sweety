@@ -1,0 +1,37 @@
+<!-- <div class="banner-container">
+  <a
+    href="https://www.sosweetshop.co.uk/collections/gift-jars"
+    class="banner-image"
+  ></a>
+  <a
+    href="https://www.sosweetshop.co.uk/collections/jelly-belly"
+    class="banner-image"
+  ></a>
+  <a
+    href="https://www.sosweetshop.co.uk/products/sosweet-giant-cable-pouches-500g"
+    class="banner-image"
+  ></a>
+  <a
+    href="https://www.sosweetshop.co.uk/collections/freeze-dried-sweets"
+    class="banner-image"
+  ></a>
+  <a
+    href="https://www.sosweetshop.co.uk/collections/minion"
+    class="banner-image"
+  ></a>
+  <a
+    href="https://www.sosweetshop.co.uk/collections/teacher-gifts"
+    class="banner-image"
+  ></a>
+</div> -->
+<div class="container">
+  <div class="banner-container rounded">
+    <div
+      class="banner-image"
+      *ngFor="let banner of banners"
+      [ngStyle]="{ 'background-image': 'url(' + banner.image + ')' }"
+    >
+      <a [href]="banner.link" class="banner-link"></a>
+    </div>
+  </div>
+</div>

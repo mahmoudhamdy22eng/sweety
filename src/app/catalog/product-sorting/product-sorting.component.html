@@ -1,0 +1,8 @@
+<div class="container mt-5">
+  <h5>Sort by</h5>
+  <select class="form-select" (change)="onSortChange($event)">
+    <option *ngFor="let option of sortOptions" [value]="option">
+      {{ option }}
+    </option>
+  </select>
+</div>

@@ -1,0 +1,7 @@
+<div class="product-images">
+  <div *ngIf="images && images.length">
+    <div *ngFor="let image of images; let i = index" class="product-image">
+      <img [src]="image" [alt]="'Image ' + i" class="img-fluid" />
+    </div>
+  </div>
+</div>

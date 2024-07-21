@@ -1,0 +1,12 @@
+.container {
+  max-width: 960px;
+}
+
+h1 {
+  font-family: "Georgia, serif";
+  color: #ff69b4; /* bright pink */
+}
+
+.row {
+  margin-top: 20px;
+}

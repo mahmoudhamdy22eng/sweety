@@ -1,0 +1,40 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* background: url("../assets/images/error.jpg") no-repeat center center fixed; */
+  background-size: cover;
+}
+
+.content {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 100px;
+  margin: 0;
+}
+
+p {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #fff;
+  background: #007bff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: #0056b3;
+}

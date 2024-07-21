@@ -1,0 +1,47 @@
+body,
+html {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  height: 100%;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("assets/images/error.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+h2 {
+  font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  font-weight: bold;
+}
+
+footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+footer .fab {
+  font-size: 1.5rem;
+}
+
+footer .form-control {
+  max-width: 300px;
+  display: inline-block;
+}
+
+footer .btn-primary {
+  margin-top: 10px;
+}
+
+footer .text-white {
+  color: #fff !important;
+}

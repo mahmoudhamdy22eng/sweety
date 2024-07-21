@@ -1,0 +1,21 @@
+footer {
+  background-color: #343a40;
+  color: #fff;
+}
+
+footer h5 {
+  margin-bottom: 20px;
+}
+
+footer .fab {
+  font-size: 1.5rem;
+}
+
+footer .form-control {
+  max-width: 300px;
+  display: inline-block;
+}
+
+footer .btn-primary {
+  margin-top: 10px;
+}

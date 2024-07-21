@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <h4>Address Book</h4>
+  <a routerLink="/account/address-book/new" class="btn btn-success mb-3"
+    >Add New Address</a
+  >
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Postal Code</th>
+        <th>Country</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let address of addresses">
+        <td>{{ address.name }}</td>
+        <td>{{ address.address }}</td>
+        <td>{{ address.city }}</td>
+        <td>{{ address.postalCode }}</td>
+        <td>{{ address.country }}</td>
+        <td>
+          <a
+            [routerLink]="['/account/address-book/edit', address.id]"
+            class="btn btn-primary btn-sm"
+            >Edit</a
+          >
+          <button
+            (click)="deleteAddress(address.id)"
+            class="btn btn-danger btn-sm"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

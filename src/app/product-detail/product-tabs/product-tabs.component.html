@@ -1,0 +1,39 @@
+<div class="product-tabs mt-3">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="selectedTab === 'reviews'"
+        (click)="selectTab('reviews')"
+        >Reviews</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="selectedTab === 'specifications'"
+        (click)="selectTab('specifications')"
+        >Specifications</a
+      >
+    </li>
+  </ul>
+  <div class="tab-content mt-3">
+    <div *ngIf="selectedTab === 'reviews'" class="tab-pane active">
+      <ul class="list-group">
+        <li *ngFor="let review of reviews" class="list-group-item">
+          {{ review }}
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="selectedTab === 'specifications'" class="tab-pane active">
+      <ul class="list-group">
+        <li
+          *ngFor="let key of specifications | keyvalue"
+          class="list-group-item"
+        >
+          <strong>{{ key.key }}:</strong> {{ key.value }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

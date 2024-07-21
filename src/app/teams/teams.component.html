@@ -1,0 +1,20 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4" *ngFor="let card of cards">
+      <div class="card text-center mb-4 hover-card">
+        <div class="card-body p-0">
+          <a [href]="card.link">
+            <img
+              [src]="card.image"
+              class="img-fluid rounded-circle p-3"
+              alt="{{ card.title }}"
+            />
+          </a>
+        </div>
+        <div class="card-footer bg-white border-0">
+          <h5 class="card-title">{{ card.title }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

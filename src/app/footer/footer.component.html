@@ -1,0 +1,38 @@
+<footer class="bg-dark text-white mt-5 py-4" *ngIf="!isLogined()">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Contact Us</h5>
+        <p>123 Sweets Street, Cairo, Egypt</p>
+        <p>Email: contact@sweets.com</p>
+        <p>Phone: +20 123 456 7890</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Follow Us</h5>
+        <a href="#" class="text-white me-2"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="col-md-4">
+        <h5>Newsletter</h5>
+        <form>
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="newsletterEmail"
+              placeholder="Enter your email"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <p>&copy; 2024 Sweets Shop. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>

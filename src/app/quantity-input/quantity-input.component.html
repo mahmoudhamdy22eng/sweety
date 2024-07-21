@@ -1,0 +1,25 @@
+<div class="d-flex align-items-center">
+  <button
+    type="button"
+    class="btn btn-outline-secondary"
+    (click)="decreaseQuantity()"
+  >
+    -
+  </button>
+  <input
+    type="number"
+    class="form-control mx-2 text-center"
+    name="quantity"
+    min="1"
+    [value]="quantity"
+    (input)="onQuantityChange($event)"
+    style="width: 60px"
+  />
+  <button
+    type="button"
+    class="btn btn-outline-secondary"
+    (click)="increaseQuantity()"
+  >
+    +
+  </button>
+</div>

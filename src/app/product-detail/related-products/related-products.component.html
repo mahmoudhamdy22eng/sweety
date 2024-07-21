@@ -1,0 +1,21 @@
+<div class="related-products mt-5">
+  <h5>Related Products</h5>
+  <div class="row">
+    <div *ngFor="let product of products" class="col-md-3 mb-4">
+      <div class="card h-100">
+        <img
+          [src]="product.imageUrl"
+          class="card-img-top"
+          alt="{{ product.name }}"
+        />
+        <div class="card-body d-flex flex-column">
+          <h6 class="card-title">{{ product.name }}</h6>
+          <p class="card-text">{{ product.price | currency }}</p>
+          <a href="#" class="btn btn-primary mt-auto"
+            ><i class="fas fa-cart-plus"></i> Add to Cart</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

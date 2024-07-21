@@ -1,0 +1,25 @@
+.contact-form {
+  background-color: #ffe6e6; /* light pink */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+  color: #ff69b4; /* bright pink */
+  font-family: "Georgia, serif";
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border: 1px solid #ff69b4; /* bright pink */
+}
+
+.btn-primary {
+  background-color: #ff69b4; /* bright pink */
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #ff4081; /* darker pink */
+}

@@ -1,0 +1,24 @@
+.address-info {
+  background-color: #ffe6e6; /* light pink */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.address-info h2 {
+  color: #ff69b4; /* bright pink */
+  font-family: "Georgia, serif";
+  margin-bottom: 20px;
+}
+
+.text-primary {
+  color: #ff69b4; /* bright pink */
+}
+
+.fa {
+  margin-bottom: 10px;
+}
+
+.text-center p {
+  margin-bottom: 20px;
+}

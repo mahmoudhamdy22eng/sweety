@@ -1,0 +1,15 @@
+<div>
+  <form (submit)="addToCart($event)">
+    <input type="hidden" name="form_type" value="product" />
+    <input type="hidden" name="utf8" value="✓" />
+    <input type="hidden" name="id" [value]="productId" />
+    <div class="product-buy-main mb-3">
+      <div class="grid-qty-main">
+        <app-quantity-input [(quantity)]="quantity"></app-quantity-input>
+      </div>
+    </div>
+    <button class="btn btn-primary w-100" type="submit">Add to cart</button>
+    <a href="#" class="btn btn-secondary w-100 mt-2">View details</a>
+    <input type="hidden" name="product-id" [value]="productId" />
+  </form>
+</div>

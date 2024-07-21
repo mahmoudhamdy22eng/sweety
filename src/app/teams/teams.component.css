@@ -1,0 +1,25 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.img-fluid {
+  border-radius: 50%;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.hover-card:hover {
+  cursor: pointer;
+}

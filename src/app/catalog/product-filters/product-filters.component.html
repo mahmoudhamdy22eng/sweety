@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <h5>Filter by Category</h5>
+  <ul class="list-group">
+    <li
+      *ngFor="let category of categories"
+      class="list-group-item"
+      [class.active]="category === selectedCategory"
+      (click)="onCategoryChange(category)"
+    >
+      {{ category }}
+    </li>
+  </ul>
+</div>

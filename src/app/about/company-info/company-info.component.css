@@ -1,0 +1,31 @@
+.contact-section {
+  background-color: #ffe6e6; /* light pink */
+  border-radius: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+  color: #ff69b4; /* bright pink */
+}
+
+.contact-section h3 {
+  color: #5a3e36;
+  margin-top: 20px;
+}
+
+.contact-section p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.fa {
+  color: #add8e6; /* baby blue */
+  transition: color 0.3s;
+  margin-right: 10px;
+}
+
+.fa:hover {
+  color: #ff69b4; /* bright pink */
+}

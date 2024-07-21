@@ -1,0 +1,14 @@
+.navbar-brand img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-link {
+  margin-right: 10px;
+}
+
+.navbar {
+  background-color: #fff;
+  padding: 10px 20px;
+}

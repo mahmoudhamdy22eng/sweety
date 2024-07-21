@@ -1,0 +1,44 @@
+#main-content {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.shopify-section {
+  background-color: #fff;
+  padding: 50px 0;
+  border-radius: 10px;
+}
+
+h2.section__block--heading {
+  color: #ff69b4; /* bright pink */
+  font-family: "Georgia, serif";
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #ff69b4; /* bright pink */
+  margin-top: 30px;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.section__block {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.enlarge-text {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <app-product-filters
+        (categoryChange)="filterProducts($event)"
+      ></app-product-filters>
+    </div>
+    <div class="col-md-9">
+      <app-product-sorting
+        (sortChange)="sortProducts($event)"
+      ></app-product-sorting>
+      <app-product-list [products]="filteredProducts"></app-product-list>
+    </div>
+  </div>
+</div>

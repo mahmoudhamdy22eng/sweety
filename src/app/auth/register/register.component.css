@@ -1,0 +1,65 @@
+/* Adjust the height of the container for smaller screens */
+@media (max-width: 768px) {
+  .vh-100 {
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Adjust form input margins and paddings */
+.form-control {
+  margin-bottom: 15px;
+}
+
+/* Error message styles */
+.msgerror small {
+  color: red;
+}
+
+/* Center the card and add some padding for smaller screens */
+.card {
+  margin: 20px;
+}
+
+/* Adjust button sizes and spacing */
+.btn-primary {
+  padding: 10px 20px;
+}
+
+/* Ensure the image scales properly */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 576px) {
+  .card {
+    padding: 10px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Align form elements */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  margin-bottom: 10px;
+}
+
+/* Style the agreement checkbox */
+.form-check-label {
+  margin-left: 5px;
+}
