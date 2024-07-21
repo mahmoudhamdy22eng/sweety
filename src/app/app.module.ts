@@ -83,6 +83,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { QuantityInputComponent } from './quantity-input/quantity-input.component';
 import { TeamsComponent } from './teams/teams.component';
+import { LolComponent } from './lol/lol.component';
 
 @NgModule({
   declarations: [
@@ -161,6 +162,7 @@ import { TeamsComponent } from './teams/teams.component';
     ProductFormComponent,
     QuantityInputComponent,
     TeamsComponent,
+    LolComponent,
   ],
   imports: [
     BrowserModule,
