@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -7,11 +7,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent {
+  showHeaderFooter = true;
+  public underline = false;
+
   constructor(private router: Router) {}
-  isLogined() {
-    // return this.route.url == '/login' || this.route.url == '/home';
-    return (
-      this.router.url == '/auth/login' || this.router.url == '/auth/register'
-    );
+
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showHeaderFooter =
+          ![
+            '/auth/login',
+            '/auth/register',
+            '/page-not-found',
+            '**',
+          ].some((route) => event.url.startsWith(route));
+      }
+    });
   }
 }

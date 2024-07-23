@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .promo-banner {
   display: flex;
   align-items: center;
@@ -78,3 +79,85 @@
     object-fit: cover;
   }
 }
+=======
+.promo-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  background: linear-gradient(to right, #eaf6fb, #fdebff);
+}
+
+.promo-banner .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.promo-banner h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  color: #f19ac6;
+}
+
+.promo-banner p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #d86ba2;
+}
+
+.promo-banner .btn-primary,
+.promo-banner .btn-outline-primary {
+  background: none;
+  border: 2px solid #512da8;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  color: #512da8;
+  transition: all 0.3s ease;
+}
+
+.promo-banner .btn-primary:hover,
+.promo-banner .btn-outline-primary:hover {
+  background: #512da8;
+  color: #fff;
+}
+
+.promo-banner .btn-primary {
+  margin-right: 1rem;
+}
+
+.promo-banner .lead {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #512da8;
+}
+
+.promo-banner img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .promo-banner .container {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .promo-banner .col-md-6 {
+    flex: 1;
+  }
+
+  .promo-banner .col-md-6:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .promo-banner .col-md-6:nth-child(2) img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+}
+>>>>>>> origin/master

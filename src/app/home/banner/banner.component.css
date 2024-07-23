@@ -63,6 +63,16 @@
     opacity: 1;
   }
 } */
+
+.txt1{
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(0, 174, 239);
+  /* color: #ff69b4; */
+}
+.txt11{
+  color: #ff69b4;
+}
 .banner-container {
   position: relative;
   width: 100%;

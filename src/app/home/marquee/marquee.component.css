@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .marqueeInfinityLooping {
   overflow: hidden;
   position: relative;
@@ -64,3 +65,71 @@
     font-size: 12px;
   }
 }
+=======
+.marqueeInfinityLooping {
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  background-color: #f8f9fa; /* Light background color */
+  padding: 10px 0; /* Add padding for better spacing */
+}
+
+.marqueeGroup {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 35s linear infinite; /* Slower duration for better readability */
+}
+
+.marqueeList {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.marqueeList li {
+  display: inline-block;
+  margin: 0 30px; /* Add margin to space out items */
+  padding: 10px 20px; /* Add padding for better spacing */
+  background-color: #ffffff; /* Background color for items */
+  border-radius: 5px; /* Rounded corners for items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for items */
+  font-size: 16px; /* Font size */
+}
+
+.marqueeList li span {
+  display: flex;
+  align-items: center;
+}
+
+.marqueeList li i {
+  margin-right: 10px; /* Spacing between icon and text */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .marqueeList li {
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .marqueeList li {
+    margin: 0 5px;
+    padding: 3px 5px;
+    font-size: 12px;
+  }
+}
+>>>>>>> origin/master

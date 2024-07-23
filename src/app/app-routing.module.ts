@@ -30,9 +30,13 @@ import { OrderSummaryComponent } from './checkout/order-summary/order-summary.co
 import { PaymentMethodComponent } from './checkout/payment-method/payment-method.component';
 
 import { ShippingFormComponent } from './checkout/shipping-form/shipping-form.component';
+<<<<<<< HEAD
 
 import { ContactUsComponent } from './contact/contact.component';
 
+=======
+import { ContactUsComponent } from './contact/contact.component';
+>>>>>>> origin/master
 import { FaqComponent } from './faq/faq.component';
 
 import { BannerComponent } from './home/banner/banner.component';

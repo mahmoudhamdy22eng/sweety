@@ -8,6 +8,24 @@ import { Component, OnInit } from '@angular/core';
 export class ContactUsComponent implements OnInit {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
+<<<<<<< HEAD
+  }
+  loading = false;
+  errorMessage = '';
+  sentMessage = '';
+
+  onSubmit() {
+    this.loading = true;
+    this.errorMessage = '';
+    this.sentMessage = '';
+
+    // Simulate form submission
+    setTimeout(() => {
+      this.loading = false;
+      this.sentMessage = 'Your message has been sent. Thank you!';
+    }, 2000);
+=======
+>>>>>>> origin/master
   }
   loading = false;
   errorMessage = '';

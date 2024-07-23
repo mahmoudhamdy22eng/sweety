@@ -7,10 +7,75 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./catalog.component.css'],
 })
 export class CatalogComponent implements OnInit {
-  products: any[] = [];
+  products: {
+    image: string;
+    name: string;
+    description: string;
+    price: number;
+  }[] = [
+    {
+      image: 'assets/images/candy1.jpg',
+      name: 'Candy Delight',
+      description: 'A delightful mix of fruity candies.',
+      price: 9.99,
+    },
+    {
+      image: 'assets/images/chocolate1.jpg',
+      name: 'Chocolate Heaven',
+      description: 'Rich and creamy chocolates for every occasion.',
+      price: 14.99,
+    },
+    {
+      image: 'assets/images/candy2.jpg',
+      name: 'Sour Surprise',
+      description: 'A tangy twist on classic sweets.',
+      price: 7.99,
+    },
+    {
+      image: 'assets/images/candy3.jpg',
+      name: 'Gummy Bears',
+      description: 'Colorful and chewy gummy bears.',
+      price: 5.99,
+    },
+    {
+      image: 'assets/images/chocolate2.jpg',
+      name: 'Dark Chocolate Bites',
+      description: 'Decadent dark chocolate bites.',
+      price: 12.99,
+    },
+    {
+      image: 'assets/images/candy4.jpg',
+      name: 'Lollipop Wonderland',
+      description: 'A variety of colorful lollipops.',
+      price: 6.99,
+    },
+    {
+      image: 'assets/images/candy5.jpg',
+      name: 'Marshmallow Treats',
+      description: 'Soft and fluffy marshmallows.',
+      price: 4.99,
+    },
+    {
+      image: 'assets/images/chocolate3.jpg',
+      name: 'Milk Chocolate Bars',
+      description: 'Creamy milk chocolate bars.',
+      price: 11.99,
+    },
+    {
+      image: 'assets/images/candy6.jpg',
+      name: 'Hard Candy Mix',
+      description: 'A mix of hard candies.',
+      price: 8.99,
+    },
+    // Add more products as needed
+  ];
+
+
+  // products: any[] = [];
   filteredProducts: any[] = [];
   selectedCategory: string = '';
   selectedSortOption: string = '';
+
 
   constructor(private productService: ProductService) {}
 
@@ -19,28 +84,37 @@ export class CatalogComponent implements OnInit {
       this.products = products;
       this.filteredProducts = products;
     });
+
+    // let typepet = this.route.snapshot.paramMap.get('id');
+    // console.log(typepet);
+    // if(typepet != null){
+    //   let cond = 'pet_type_no=2 and pet_id='+typepet;
+    //   this.api.get_pets(cond)
+    //   .subscribe({next:(data:any)=>{
+    //     console.log(data[0]);
+    //     this.dogs=data;
+    //   }})
+    // }else{
+    //   let cond = 'pet_type_no=2';
+
+    //   this.api.get_pets(cond)
+    //   .subscribe({next:(data:any)=>{
+    //     console.log(data[0]);
+    //     this.dogs=data;
+    //   }})
+    // }
+  
   }
 
-  filterProducts(category: string): void {
-    this.selectedCategory = category;
-    this.applyFilters();
-  }
+  
 
   sortProducts(sortOption: string): void {
     this.selectedSortOption = sortOption;
     this.applySorting();
   }
+  
 
-  private applyFilters(): void {
-    if (this.selectedCategory) {
-      this.filteredProducts = this.products.filter(
-        (product) => product.category === this.selectedCategory
-      );
-    } else {
-      this.filteredProducts = this.products;
-    }
-    this.applySorting();
-  }
+  
 
   private applySorting(): void {
     if (this.selectedSortOption) {
@@ -60,4 +134,6 @@ export class CatalogComponent implements OnInit {
       }
     }
   }
+
+  
 }

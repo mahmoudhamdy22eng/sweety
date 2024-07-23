@@ -37,7 +37,10 @@ import { CompanyInfoComponent } from './about/company-info/company-info.componen
 import { TeamComponent } from './about/team/team.component';
 
 import { ContactUsComponent } from './contact/contact.component';
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 import { FaqComponent } from './faq/faq.component';
 
 import { TermsComponent } from './terms/terms.component';
@@ -81,9 +84,16 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { QuantityInputComponent } from './quantity-input/quantity-input.component';
 import { TeamsComponent } from './teams/teams.component';
+<<<<<<< HEAD
 import { MarqueeComponent } from './home/marquee/marquee.component';
 import { CandyInfoComponent } from './home/candy-info/candy-info.component';
 import { CandyBannerComponent } from './home/candy-banner/candy-banner.component';
+=======
+import { BestSellingComponent } from './home/best-selling/best-selling.component';
+import { CandyBannerComponent } from './home/candy-banner/candy-banner.component';
+import { CandyInfoComponent } from './home/candy-info/candy-info.component';
+import { MarqueeComponent } from './home/marquee/marquee.component';
+>>>>>>> origin/master
 
 @NgModule({
   declarations: [
@@ -119,7 +129,11 @@ import { CandyBannerComponent } from './home/candy-banner/candy-banner.component
     AboutComponent,
     CompanyInfoComponent,
     TeamComponent,
+<<<<<<< HEAD
 
+=======
+    ContactInfoComponent,
+>>>>>>> origin/master
     FaqComponent,
 
     TermsComponent,
@@ -158,9 +172,16 @@ import { CandyBannerComponent } from './home/candy-banner/candy-banner.component
     ProductFormComponent,
     QuantityInputComponent,
     TeamsComponent,
+<<<<<<< HEAD
     MarqueeComponent,
     CandyInfoComponent,
     CandyBannerComponent,
+=======
+    BestSellingComponent,
+    CandyBannerComponent,
+    CandyInfoComponent,
+    MarqueeComponent,
+>>>>>>> origin/master
   ],
   imports: [
     BrowserAnimationsModule,
@@ -169,10 +190,18 @@ import { CandyBannerComponent } from './home/candy-banner/candy-banner.component
 
     FormsModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
     HttpClientModule,
   ],
   providers: [ProductService, CartService, CheckoutService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+=======
+    
+  ],
+  providers: [ProductService, CartService, CheckoutService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+>>>>>>> origin/master
 })
 export class AppModule {}
