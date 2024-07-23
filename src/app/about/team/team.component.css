@@ -1,39 +1,33 @@
-.team-section {
-  background-color: #ffe6e6; /* light pink */
-  border-radius: 15px;
-  margin-bottom: 30px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.team-section h2 {
-  color: #ff69b4; /* bright pink */
+body {
+  background-color: #f0f4f7;
 }
 
 .card {
   border: none;
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-img-top {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border: 3px solid #add8e6; /* baby blue */
-  margin-top: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-title {
-  color: #ff69b4; /* bright pink */
-  font-size: 1.2rem;
+  color: #0d47a1;
+  font-weight: bold;
 }
 
 .card-text {
-  color: #555;
-  font-size: 1rem;
+  color: #0d47a1;
+}
+
+.container {
+  padding: 40px;
+}
+
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
 }

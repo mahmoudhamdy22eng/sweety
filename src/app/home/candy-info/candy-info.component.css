@@ -1,0 +1,40 @@
+.container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.sweetshop-title {
+  font-family: "Pacifico", cursive;
+  color: #ff69b4 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-primary {
+  color: #ff69b4;
+  border-color: #ff69b4;
+}
+
+.btn-outline-primary:hover {
+  background-color: #ff69b4;
+  color: #ffffff;
+  border-color: #ff69b4;
+}
+
+.bg-light {
+  background-color: #fff3e6 !important;
+}
+
+.text-primary {
+  color: #ff69b4 !important;
+}
+
+p.lead {
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}

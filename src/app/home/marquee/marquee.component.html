@@ -1,0 +1,32 @@
+<section class="shopify-section marquee-text">
+  <div class="marqueeInfinityLooping">
+    <div class="marqueeGroup">
+      <ul class="marqueeList">
+        <li *ngFor="let item of marqueeItems">
+          <span>
+            <i
+              class="fa"
+              [ngClass]="item.icon"
+              [style.color]="item.iconColor"
+            ></i>
+            {{ item.text }}
+            <i class="fa fa-circle" [style.color]="item.color"></i>
+          </span>
+        </li>
+      </ul>
+      <ul aria-hidden="true" class="marqueeList">
+        <li *ngFor="let item of marqueeItems">
+          <span>
+            <i
+              class="fa"
+              [ngClass]="item.icon"
+              [style.color]="item.iconColor"
+            ></i>
+            {{ item.text }}
+            <i class="fa fa-circle" [style.color]="item.color"></i>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

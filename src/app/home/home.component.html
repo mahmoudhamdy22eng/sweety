@@ -1,6 +1,39 @@
 <app-banner></app-banner>
 <app-categories></app-categories>
+<app-candy-banner></app-candy-banner>
 <app-carousel-slider></app-carousel-slider>
 <app-teams></app-teams>
+<app-marquee></app-marquee>
+<app-candy-info></app-candy-info>
+<div class="container my-5">
+  <div class="row">
+    <div *ngFor="let product of products" class="col-lg-4 col-md-6 mb-4">
+      <div class="card product-card h-100 shadow-sm">
+        <div class="card-img-wrapper">
+          <img
+            [src]="product.image"
+            class="card-img-top"
+            alt="{{ product.name }}"
+          />
+          <div class="badge-wrapper">
+            <span class="badge badge-primary">New</span>
+          </div>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-price">
+            {{ product.price | currency : "EGP" : "symbol-narrow" }}
+          </p>
+          <div class="mt-auto">
+            <a href="#" class="btn btn-primary btn-block add-to-cart-btn">
+              <i class="fa fa-cart-plus"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <app-featured-products></app-featured-products>

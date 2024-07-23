@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessageComponent } from './message.component';
+import { CandyInfoComponent } from './candy-info.component';
 
-describe('MessageComponent', () => {
-  let component: MessageComponent;
-  let fixture: ComponentFixture<MessageComponent>;
+describe('CandyInfoComponent', () => {
+  let component: CandyInfoComponent;
+  let fixture: ComponentFixture<CandyInfoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MessageComponent]
+      declarations: [CandyInfoComponent]
     });
-    fixture = TestBed.createComponent(MessageComponent);
+    fixture = TestBed.createComponent(CandyInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

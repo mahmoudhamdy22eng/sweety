@@ -1,1 +1,24 @@
-x
+<div class="container mt-5">
+  <h4>Wishlist</h4>
+  <div class="list-group">
+    <div *ngFor="let item of wishlistItems" class="list-group-item">
+      <div class="d-flex justify-content-between">
+        <div>
+          <h5>{{ item.name }}</h5>
+          <p>{{ item.description }}</p>
+        </div>
+        <div>
+          <button (click)="moveToCart(item.id)" class="btn btn-primary btn-sm">
+            Move to Cart
+          </button>
+          <button
+            (click)="removeFromWishlist(item.id)"
+            class="btn btn-danger btn-sm"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

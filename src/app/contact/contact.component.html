@@ -1,12 +1,157 @@
-<!-- <div class="container mt-5">
-  <h1 class="text-center text-primary mb-4">Contact Us</h1>
-  <div class="row">
-    <div class="col-md-6">
-      <router-outlet></router-outlet>
+<section
+  id="contact"
+  class="contact section py-5"
+  style="background-color: #f8f0e3; color: #333"
+>
+  <div class="container section-title text-center mb-5" data-aos="fade-up">
+    <h2 style="color: #64b5f6">Contact</h2>
+    <p class="lead">
+      We are here to assist you with any inquiries or questions you may have.
+      Feel free to get in touch with us!
+    </p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="info-item d-flex flex-column justify-content-center align-items-center p-4 rounded shadow-sm"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          style="background-color: #e3f2fd"
+        >
+          <i
+            class="fas fa-map-marker-alt fa-2x mb-3"
+            style="color: #64b5f6"
+          ></i>
+          <h3 style="color: #64b5f6">Address</h3>
+          <p class="mb-0">123 Nile Street, Cairo, Egypt</p>
+        </div>
+      </div>
+      <!-- End Info Item -->
+
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="info-item d-flex flex-column justify-content-center align-items-center p-4 rounded shadow-sm"
+          data-aos="fade-up"
+          data-aos-delay="300"
+          style="background-color: #e3f2fd"
+        >
+          <i class="fas fa-phone fa-2x mb-3" style="color: #64b5f6"></i>
+          <h3 style="color: #64b5f6">Call Us</h3>
+          <p class="mb-0">+20 123 456 7890</p>
+        </div>
+      </div>
+      <!-- End Info Item -->
+
+      <div class="col-lg-4 col-md-6 mx-md-auto">
+        <div
+          class="info-item d-flex flex-column justify-content-center align-items-center p-4 rounded shadow-sm"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          style="background-color: #e3f2fd"
+        >
+          <i class="fas fa-envelope fa-2x mb-3" style="color: #64b5f6"></i>
+          <h3 style="color: #64b5f6">Email Us</h3>
+          <p class="mb-0">info@handmadeshop.com</p>
+        </div>
+      </div>
+      <!-- End Info Item -->
     </div>
-    <div class="col-md-6">
-      <app-address-info></app-address-info>
-      <app-location-map></app-location-map>
+
+    <div class="row gy-4 mt-4">
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="embed-responsive embed-responsive-16by9 rounded shadow-sm">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3451.746234477677!2d31.2357!3d30.0444!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145840c0b387a2e1%3A0x9f15b5e0d1b3b79e!2sCairo%2C%20Egypt!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
+            frameborder="0"
+            style="border: 0; width: 100%; height: 400px"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="embed-responsive-item"
+          ></iframe>
+        </div>
+      </div>
+      <!-- End Google Maps -->
+
+      <div class="col-lg-6">
+        <form
+          (ngSubmit)="onSubmit()"
+          class="php-email-form p-4 rounded shadow-sm"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          style="background-color: #e3f2fd"
+        >
+          <div class="row gy-4">
+            <div class="col-md-6">
+              <input
+                type="text"
+                name="name"
+                ngModel
+                class="form-control"
+                placeholder="Your Name"
+                required
+                style="border: 1px solid #64b5f6; color: #333"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <input
+                type="email"
+                name="email"
+                ngModel
+                class="form-control"
+                placeholder="Your Email"
+                required
+                style="border: 1px solid #64b5f6; color: #333"
+              />
+            </div>
+
+            <div class="col-md-12">
+              <input
+                type="text"
+                name="subject"
+                ngModel
+                class="form-control"
+                placeholder="Subject"
+                required
+                style="border: 1px solid #64b5f6; color: #333"
+              />
+            </div>
+
+            <div class="col-md-12">
+              <textarea
+                name="message"
+                ngModel
+                class="form-control"
+                rows="6"
+                placeholder="Message"
+                required
+                style="border: 1px solid #64b5f6; color: #333"
+              ></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+              <div class="loading" *ngIf="loading">Loading</div>
+              <div class="error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+              </div>
+              <div class="sent-message" *ngIf="sentMessage">
+                {{ sentMessage }}
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="background-color: #64b5f6; border: none"
+              >
+                Send Message
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div> -->
+</section>

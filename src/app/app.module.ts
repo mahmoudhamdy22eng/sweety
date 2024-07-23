@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,7 @@ import { CartComponent } from './cart/cart.component';
 import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component';
 import { CartItemsComponent } from './cart/cart-items/cart-items.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { ProgressIndicatorComponent } from './checkout/progress-indicator/progress-indicator.component';
+
 import { ShippingFormComponent } from './checkout/shipping-form/shipping-form.component';
 import { DeliveryOptionsComponent } from './checkout/delivery-options/delivery-options.component';
 import { PaymentMethodComponent } from './checkout/payment-method/payment-method.component';
@@ -26,7 +26,7 @@ import { OrderSummaryComponent } from './checkout/order-summary/order-summary.co
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { ThankYouMessageComponent } from './order-confirmation/thank-you-message/thank-you-message.component';
 import { AccountComponent } from './account/account.component';
-import { SidebarComponent } from './account/sidebar/sidebar.component';
+
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
 import { PersonalInfoComponent } from './account/personal-info/personal-info.component';
 import { AuthComponent } from './auth/auth.component';
@@ -35,13 +35,11 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AboutComponent } from './about/about.component';
 import { CompanyInfoComponent } from './about/company-info/company-info.component';
 import { TeamComponent } from './about/team/team.component';
-import { ContactInfoComponent } from './about/contact-info/contact-info.component';
+
 import { ContactUsComponent } from './contact/contact.component';
-import { ContactFormComponent } from './contact/contact-form/contact-form.component';
-import { AddressInfoComponent } from './contact/address-info/address-info.component';
-import { LocationMapComponent } from './contact/location-map/location-map.component';
+
 import { FaqComponent } from './faq/faq.component';
-import { QuestionListComponent } from './faq/question-list/question-list.component';
+
 import { TermsComponent } from './terms/terms.component';
 import { TermsContentComponent } from './terms/terms-content/terms-content.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
@@ -63,19 +61,19 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
-import { MaintenanceComponent } from './maintenance/maintenance.component';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FeaturedProductsComponent } from './home/featured-products/featured-products.component';
 import { ProductFiltersComponent } from './catalog/product-filters/product-filters.component';
 import { ProductSortingComponent } from './catalog/product-sorting/product-sorting.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { CheckoutService } from './services/checkout.service';
 import { CartService } from './services/cart.service';
 import { ProductService } from './services/product.service';
-import { AccountDashboardComponent } from './account/account-dashboard/account-dashboard.component';
+
 import { AddressBookComponent } from './account/address-book/address-book.component';
 import { AddressFormComponent } from './account/address-form/address-form.component';
 import { CarouselSliderComponent } from './carousel-slider/carousel-slider.component';
@@ -83,7 +81,9 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { QuantityInputComponent } from './quantity-input/quantity-input.component';
 import { TeamsComponent } from './teams/teams.component';
-import { LolComponent } from './lol/lol.component';
+import { MarqueeComponent } from './home/marquee/marquee.component';
+import { CandyInfoComponent } from './home/candy-info/candy-info.component';
+import { CandyBannerComponent } from './home/candy-banner/candy-banner.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +102,7 @@ import { LolComponent } from './lol/lol.component';
     CartSummaryComponent,
     CartItemsComponent,
     CheckoutComponent,
-    ProgressIndicatorComponent,
+
     ShippingFormComponent,
     DeliveryOptionsComponent,
     PaymentMethodComponent,
@@ -110,7 +110,7 @@ import { LolComponent } from './lol/lol.component';
     OrderConfirmationComponent,
     ThankYouMessageComponent,
     AccountComponent,
-    SidebarComponent,
+
     OrderHistoryComponent,
     PersonalInfoComponent,
     AuthComponent,
@@ -119,13 +119,9 @@ import { LolComponent } from './lol/lol.component';
     AboutComponent,
     CompanyInfoComponent,
     TeamComponent,
-    ContactInfoComponent,
 
-    ContactFormComponent,
-    AddressInfoComponent,
-    LocationMapComponent,
     FaqComponent,
-    QuestionListComponent,
+
     TermsComponent,
     TermsContentComponent,
     SearchResultsComponent,
@@ -147,14 +143,14 @@ import { LolComponent } from './lol/lol.component';
     ManageProductsComponent,
     ManageOrdersComponent,
     ManageUsersComponent,
-    MaintenanceComponent,
+
     HeaderComponent,
     FooterComponent,
     FeaturedProductsComponent,
     ProductFiltersComponent,
     ProductSortingComponent,
     ForgotPasswordComponent,
-    AccountDashboardComponent,
+
     AddressBookComponent,
     AddressFormComponent,
     CarouselSliderComponent,
@@ -162,17 +158,21 @@ import { LolComponent } from './lol/lol.component';
     ProductFormComponent,
     QuantityInputComponent,
     TeamsComponent,
-    LolComponent,
+    MarqueeComponent,
+    CandyInfoComponent,
+    CandyBannerComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
+
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [ProductService, CartService, CheckoutService],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
