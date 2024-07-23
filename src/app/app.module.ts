@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,9 +37,6 @@ import { CompanyInfoComponent } from './about/company-info/company-info.componen
 import { TeamComponent } from './about/team/team.component';
 import { ContactInfoComponent } from './about/contact-info/contact-info.component';
 import { ContactUsComponent } from './contact/contact.component';
-import { ContactFormComponent } from './contact/contact-form/contact-form.component';
-import { AddressInfoComponent } from './contact/address-info/address-info.component';
-import { LocationMapComponent } from './contact/location-map/location-map.component';
 import { FaqComponent } from './faq/faq.component';
 import { QuestionListComponent } from './faq/question-list/question-list.component';
 import { TermsComponent } from './terms/terms.component';
@@ -83,6 +80,10 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { QuantityInputComponent } from './quantity-input/quantity-input.component';
 import { TeamsComponent } from './teams/teams.component';
+import { BestSellingComponent } from './home/best-selling/best-selling.component';
+import { CandyBannerComponent } from './home/candy-banner/candy-banner.component';
+import { CandyInfoComponent } from './home/candy-info/candy-info.component';
+import { MarqueeComponent } from './home/marquee/marquee.component';
 
 @NgModule({
   declarations: [
@@ -119,10 +120,6 @@ import { TeamsComponent } from './teams/teams.component';
     CompanyInfoComponent,
     TeamComponent,
     ContactInfoComponent,
-
-    ContactFormComponent,
-    AddressInfoComponent,
-    LocationMapComponent,
     FaqComponent,
     QuestionListComponent,
     TermsComponent,
@@ -161,6 +158,10 @@ import { TeamsComponent } from './teams/teams.component';
     ProductFormComponent,
     QuantityInputComponent,
     TeamsComponent,
+    BestSellingComponent,
+    CandyBannerComponent,
+    CandyInfoComponent,
+    MarqueeComponent,
   ],
   imports: [
     BrowserModule,
@@ -169,8 +170,10 @@ import { TeamsComponent } from './teams/teams.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
   providers: [ProductService, CartService, CheckoutService],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

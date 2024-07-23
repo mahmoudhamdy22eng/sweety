@@ -6,19 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css'],
 })
 export class ContactUsComponent implements OnInit {
-  contactData = {
-    name: '',
-    email: '',
-    message: '',
-  };
-  successMessage: string | null = null;
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+  loading = false;
+  errorMessage = '';
+  sentMessage = '';
 
-  constructor() {}
+  onSubmit() {
+    this.loading = true;
+    this.errorMessage = '';
+    this.sentMessage = '';
 
-  ngOnInit(): void {}
-
-  sendContactForm(): void {
-    this.successMessage = 'Your message has been sent successfully!';
-    this.contactData = { name: '', email: '', message: '' };
+    // Simulate form submission
+    setTimeout(() => {
+      this.loading = false;
+      this.sentMessage = 'Your message has been sent. Thank you!';
+    }, 2000);
   }
 }

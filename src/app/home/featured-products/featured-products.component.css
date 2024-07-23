@@ -2,3 +2,20 @@
   height: 200px;
   object-fit: cover;
 }
+
+.promo-banner .btn-primary, .btn,
+.promo-banner .btn-outline-primary {
+  background: transparent !important;
+  border: 2px solid #512da8 !important;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  color: #512da8 !important;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.promo-banner .btn-primary:hover, .btn:hover,
+.promo-banner .btn-outline-primary:hover {
+  background: #512da8 !important;
+  color: #ffffff !important;
+}

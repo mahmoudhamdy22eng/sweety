@@ -1,40 +1,22 @@
-:host {
-  height: 100%;
+body {
+  margin: 0;
+  padding: 0;
+  background: url('/assets/images/error.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  /* background: url("../assets/images/error.jpg") no-repeat center center fixed; */
-  background-size: cover;
+  align-items: flex-end;
+  height: 100vh;
 }
-
-.content {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
+.button-container {
+  margin-bottom: 60px; /* Adjust as necessary */
 }
-
-h1 {
-  font-size: 100px;
-  margin: 0;
-}
-
-p {
-  font-size: 24px;
-  margin: 20px 0;
-}
-
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 20px;
-  color: #fff;
-  background: #007bff;
+.return-button {
+  width: 360px;
+  height: 60px;
+  /* background: url('return_to_home_button.png') no-repeat center center; */
+  background-size: contain;
   border: none;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
-.button:hover {
-  background: #0056b3;
+  cursor: pointer;
 }

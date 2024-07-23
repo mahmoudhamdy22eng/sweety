@@ -1,31 +1,28 @@
-.contact-section {
-  background-color: #ffe6e6; /* light pink */
+body {
+  background-color: #f0f4f7;
+}
+
+.card {
+  border: none;
   border-radius: 15px;
-  margin-bottom: 30px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.contact-section h2 {
-  color: #ff69b4; /* bright pink */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.contact-section h3 {
-  color: #5a3e36;
-  margin-top: 20px;
+.card-title {
+  color: #0d47a1;
+  font-weight: bold;
 }
 
-.contact-section p {
-  font-size: 1.1rem;
-  color: #555;
+.card-text {
+  color: #0d47a1;
 }
 
-.fa {
-  color: #add8e6; /* baby blue */
-  transition: color 0.3s;
-  margin-right: 10px;
-}
-
-.fa:hover {
-  color: #ff69b4; /* bright pink */
+.container {
+  padding: 40px;
 }

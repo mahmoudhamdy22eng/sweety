@@ -30,10 +30,7 @@ import { OrderSummaryComponent } from './checkout/order-summary/order-summary.co
 import { PaymentMethodComponent } from './checkout/payment-method/payment-method.component';
 import { ProgressIndicatorComponent } from './checkout/progress-indicator/progress-indicator.component';
 import { ShippingFormComponent } from './checkout/shipping-form/shipping-form.component';
-import { AddressInfoComponent } from './contact/address-info/address-info.component';
-import { ContactFormComponent } from './contact/contact-form/contact-form.component';
 import { ContactUsComponent } from './contact/contact.component';
-import { LocationMapComponent } from './contact/location-map/location-map.component';
 import { FaqComponent } from './faq/faq.component';
 import { QuestionListComponent } from './faq/question-list/question-list.component';
 import { BannerComponent } from './home/banner/banner.component';
@@ -154,11 +151,6 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactUsComponent,
-    children: [
-      { path: 'form', component: ContactFormComponent },
-      { path: 'address', component: AddressInfoComponent },
-      { path: 'map', component: LocationMapComponent },
-    ],
   },
   {
     path: 'faq',

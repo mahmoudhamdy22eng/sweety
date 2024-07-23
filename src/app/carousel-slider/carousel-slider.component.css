@@ -1,0 +1,45 @@
+.btn-outline-primary {
+    color: #ff69b4;
+    border-color: #ff69b4;
+    background-color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #ff69b4;
+    color: #ffffff;
+    border-color: #ff69b4;
+  }
+
+.firstdiv{
+    background-color: rgb(255, 243, 230) ;
+}
+
+.promo-banner .btn-primary, .btn,
+.promo-banner .btn-outline-primary {
+  background: transparent !important;
+  border: 2px solid #ff69b4 !important;
+  border-radius: 20px;
+  /* padding: 0.75rem 2rem; */
+  color: #ff69b4 !important;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 17px;
+
+}
+.promo-banner .btn-primary:hover, .btn:hover,
+.promo-banner .btn-outline-primary:hover {
+  background: #ff69b4 !important;
+  color: #ffffff !important;
+}
+
+.sweetshop-title {
+    font-family: "Pacifico", cursive;
+    color: #ff69b4 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 17px;
+  }
+.text-primary {
+    color: #ff69b4 !important;
+  }

@@ -1,12 +1,51 @@
-.container {
-  max-width: 960px;
+#contact {
+  font-family: "Arial", sans-serif;
 }
 
-h1 {
-  font-family: "Georgia, serif";
-  color: #ff69b4; /* bright pink */
+#contact .section-title h2 {
+  color: #64b5f6;
 }
 
-.row {
-  margin-top: 20px;
+#contact .section-title p.lead {
+  color: #333;
+}
+
+.info-item {
+  background-color: #e3f2fd;
+  color: #333;
+}
+
+.info-item h3 {
+  color: #64b5f6;
+}
+
+.info-item i {
+  color: #64b5f6;
+}
+
+.php-email-form {
+  background-color: #e3f2fd;
+}
+
+.php-email-form input,
+.php-email-form textarea {
+  border: 1px solid #64b5f6;
+  color: #333;
+}
+
+.php-email-form button {
+  background-color: #64b5f6;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .info-item {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .php-email-form {
+    padding: 20px;
+  }
 }

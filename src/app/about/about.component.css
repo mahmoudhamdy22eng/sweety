@@ -1,44 +1,40 @@
-#main-content {
-  background-color: #f2f2f2;
-  padding: 20px;
+body {
+  background-color: #f0f4f7;
 }
 
-.shopify-section {
-  background-color: #fff;
-  padding: 50px 0;
-  border-radius: 10px;
+.jumbotron {
+  background-color: #bbdefb;
+  color: #0d47a1;
+  border-radius: 15px;
 }
 
-h2.section__block--heading {
-  color: #ff69b4; /* bright pink */
-  font-family: "Georgia, serif";
-  margin-bottom: 30px;
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-h2 {
-  color: #ff69b4; /* bright pink */
-  margin-top: 30px;
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-p {
-  font-size: 1.1rem;
-  color: #555;
+.card-title {
+  color: #0d47a1;
+  font-weight: bold;
 }
 
-.section__block {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.card-text {
+  color: #0d47a1;
 }
 
-.enlarge-text {
-  font-size: 1.2rem;
+.list-group-item {
+  background-color: transparent;
+  border: none;
+  color: #0d47a1;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
+.container {
+  padding: 40px;
 }
