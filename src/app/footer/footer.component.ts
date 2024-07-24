@@ -7,7 +7,7 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent {
-  showHeaderFooter = true;
+  public showHeaderFooter = true;
   public underline = false;
 
   constructor(private router: Router) {}
@@ -17,12 +17,14 @@ export class FooterComponent {
       if (event instanceof NavigationEnd) {
         this.showHeaderFooter =
           ![
-            '/auth/login',
-            '/auth/register',
-            '/page-not-found',
-            '**',
+            '/admin',
+
           ].some((route) => event.url.startsWith(route));
       }
     });
+  }
+
+  get showHeader(): boolean {
+    return this.showHeaderFooter;
   }
 }

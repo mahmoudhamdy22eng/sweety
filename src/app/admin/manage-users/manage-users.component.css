@@ -1,0 +1,14 @@
+.imghealth{
+    transition: .5s ease-out;
+    overflow: hidden;
+    opacity: 0.7;
+}
+.imghealth:hover{
+    transform: scale(1.1);
+    opacity: 1;
+    cursor: pointer;
+}
+
+.position{
+    margin-right: 20px !important;
+}

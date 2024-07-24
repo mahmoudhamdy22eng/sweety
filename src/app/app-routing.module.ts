@@ -10,6 +10,8 @@ import { PersonalInfoComponent } from './account/personal-info/personal-info.com
 import { SidebarComponent } from './account/sidebar/sidebar.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+// import { AHeaderComponent } from './admin/header/aheader.component';
+// import { AFooterComponent } from './admin/footer/afooter.component';
 import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
@@ -61,6 +63,9 @@ import { AccountDashboardComponent } from './account/account-dashboard/account-d
 import { AddressBookComponent } from './account/address-book/address-book.component';
 import { AddressFormComponent } from './account/address-form/address-form.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { AnalyticsComponent } from './admin/analytics/analytics.component';
+import { BlogsComponent } from './admin/blogs/blogs.component';
+import { FeaturesComponent } from './admin/features/features.component';
 
 const routes: Routes = [
   {
@@ -200,7 +205,12 @@ const routes: Routes = [
     children: [
       { path: 'login', component: AdminComponent },
       { path: 'dashboard', component: DashboardComponent },
+      // { path: 'aheader', component: AHeaderComponent },
+      // { path: 'afooter', component: AFooterComponent },
       { path: 'manage-products', component: ManageProductsComponent },
+      {path: 'analytics', component: AnalyticsComponent},
+      {path: 'blogs', component: BlogsComponent},
+      {path:'features', component: FeaturesComponent},
       { path: 'manage-orders', component: ManageOrdersComponent },
       { path: 'manage-users', component: ManageUsersComponent },
     ],

@@ -17,10 +17,9 @@ export class HeaderComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.showHeaderFooter =
           ![
-            '/auth/login',
-            '/auth/register',
-            '/page-not-found',
-            '**',
+            '/admin',
+            
+
           ].some((route) => event.url.startsWith(route));
       }
     });

@@ -1,0 +1,381 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 col-md-4 col-lg-2 mb-3" *ngFor="let catego of category">
+            <div class="card imghealth text-center border-0" (click)="showSection(catego.route)">
+                <h4 class="card-title text-center">{{catego.name | titlecase}}</h4>
+                <img src="/assets/images/dashboard/features/{{catego.route}}.jpg" class="card-img-top rounded-circle border-0" alt="...">
+                
+            </div>
+        </div>
+    </div>
+</div> 
+<br>
+
+
+
+
+<!-- promotions -->
+<div class="main-card mb-3 card container" id="promotions" [hidden]="currentSection !== 'promotions'">
+<div class="card-header">
+<div class="card-header-title font-size-lg text-capitalize font-weight-normal d-flex text-center">
+    <h4 class="container">Promotions</h4></div>
+</div>
+<div class="table-responsive">
+    <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">#ID</th>
+                <!-- <th class="text-center">Avatar</th> -->
+                <th class="text-center">Name</th>
+                <th class="text-center">Phone No.</th>
+                <th class="text-center">Address</th>
+                <th class="text-center">Status(display)</th>
+                <th class="text-center">Added Date</th>
+                <th class="text-center">Available Supplies</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let store of stores">
+                <td class="text-center text-muted" style="width: 80px;">#{{store.store_id}}</td>
+                <!-- <td class="text-center" style="width: 80px;">
+                    <img alt="" class="rounded-circle" src="./assets/images/avatars/1.jpg" width="40">
+                </td> -->
+                <td class="text-center">
+                    <h6>{{store.store_name|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <h6>{{store.store_phone|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <h6>{{store.store_address|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <div style="color: green; font-size: 23px" *ngIf="store.is_deleted == 0">
+                            <i class="fa-solid fa-check"></i></div>
+                    <div style="color: red; font-size: 23px" *ngIf="store.is_deleted == 1">
+                            <i class="fa-solid fa-xmark"></i></div>
+                </td>
+                <td class="text-center">
+                    <span class="pr-2 opacity-6">
+                        <i class="fa fa-business-time"></i>
+                    </span> {{store.store_add_date}} 
+                </td>
+                <td class="text-center" style="width: 200px;">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left pr-2">
+                                    <div class="widget-numbers fsize-1 text-danger" 
+                                                *ngIf="store.store_supply == 0">0% Empty</div>
+                                    <div class="widget-numbers fsize-1 text-danger" 
+                                                *ngIf="store.store_supply == 25">25%</div>
+                                    <div class="widget-numbers fsize-1 text-danger" 
+                                                *ngIf="store.store_supply == 50">50%</div>
+                                    <div class="widget-numbers fsize-1 text-danger" 
+                                                *ngIf="store.store_supply == 75">75%</div>
+                                    <div class="widget-numbers fsize-1 text-danger" 
+                                                *ngIf="store.store_supply == 100">100% Full</div>
+                                </div>
+                                <div class="widget-content-right w-100">
+                                    <div class="progress-bar-xs progress" *ngIf="store.store_supply == 0">
+                                        <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" 
+                                            class="progress-bar bg-danger" role="progressbar" 
+                                            style="width: 0cqh;">
+                                        </div>
+                                    </div>
+                                    <div class="progress-bar-xs progress" *ngIf="store.store_supply == 25">
+                                        <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" 
+                                            class="progress-bar bg-danger" role="progressbar" 
+                                            style="width: 25%;">
+                                        </div>
+                                    </div>
+                                    <div class="progress-bar-xs progress" *ngIf="store.store_supply == 50">
+                                        <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" 
+                                            class="progress-bar bg-warning" role="progressbar" 
+                                            style="width: 50%;">
+                                        </div>
+                                    </div>
+                                    <div class="progress-bar-xs progress" *ngIf="store.store_supply == 75">
+                                        <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" 
+                                            class="progress-bar bg-warning" role="progressbar" 
+                                            style="width: 75%;">
+                                        </div>
+                                    </div>
+                                    <div class="progress-bar-xs progress" *ngIf="store.store_supply == 100">
+                                        <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" 
+                                            class="progress-bar bg-success" role="progressbar" 
+                                            style="width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group-sm btn-group" role="group">
+                        <a href="http://localhost:4200/updatestore/{{store.store_id}}" class="btn-shadow btn btn-primary">Update</a>                            
+                        <button class="btn-shadow btn btn-danger" (click)="toggleStore(store.store_id)">
+                            {{store.is_deleted == 0 ? 'Remove' : 'Restore'}}
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    <div class="d-block p-4 text-center card-footer">
+        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" routerLink="/updatestore">
+            <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Store</span>
+        </button>
+    </div>
+</div>
+
+
+<!-- Coupons -->
+<div class="main-card mb-3 card container" id="coupons" [hidden]="currentSection !== 'coupons'">
+<div class="card-header">
+    <div class="card-header-title font-size-lg text-capitalize font-weight-normal d-flex text-center">
+        <h4 class="container">Coupons</h4>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">#ID</th>
+                <!-- <th class="text-center">Avatar</th> -->
+                <th class="text-center">Name</th>
+                <th class="text-center">Address</th>
+                <th class="text-center">Available Doctor</th>
+                <th class="text-center">Phone No.</th>
+                <th class="text-center">Status(display)</th>
+                <th class="text-center">Added Date</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let clinic of clinics">
+                <td class="text-center text-muted" style="width: 80px;">#{{clinic.clinic_id}}</td>
+                <!-- <td class="text-center" style="width: 80px;">
+                    <img alt="" class="rounded-circle" src="./assets/images/avatars/1.jpg" width="40">
+                </td> -->
+                <td class="text-center">
+                    <h6>{{clinic.clinic_name|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <h6>{{clinic.clinic_address|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <h6>{{clinic.clinic_doctor_name|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <h6>{{clinic.clinic_phone|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <div style="color: green; font-size: 23px" *ngIf="clinic.is_deleted == 0">
+                            <i class="fa-solid fa-check"></i></div>
+                    <div style="color: red; font-size: 23px" *ngIf="clinic.is_deleted == 1">
+                            <i class="fa-solid fa-xmark"></i></div>
+                </td>
+                <td class="text-center">
+                    <span class="pr-2 opacity-6">
+                        <i class="fa fa-business-time"></i>
+                    </span> {{clinic.clinic_add_date}} 
+                </td>
+                
+                <td class="text-center">
+                    <div class="btn-group-sm btn-group" role="group">
+                        <a href="http://localhost:4200/updateclinic/{{clinic.clinic_id}}" class="btn-shadow btn btn-primary">Update</a>                            
+                        <button class="btn-shadow btn btn-danger" (click)="toggleClinic(clinic.clinic_id)">
+                            {{clinic.is_deleted == 0 ? 'Remove' : 'Restore'}}
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    <div class="d-block p-4 text-center card-footer">
+        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" routerLink="/updateclinic">
+            <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Clinic</span>
+        </button>
+    </div>
+</div>
+
+
+
+<!-- Notifications -->
+<div class="main-card mb-3 card container" id="notifications" [hidden]="currentSection !== 'notifications'">
+<div class="card-header">
+    <div class="card-header-title font-size-lg text-capitalize font-weight-normal d-flex text-center">
+        <h4 class="container">Notifications</h4>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">#ID</th>
+                <!-- <th class="text-center">Avatar</th> -->
+                <th class="text-center">Name</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Phone No.</th>
+                <th class="text-center">Pet Name</th>
+                <th class="text-center">Status(display)</th>
+                <th class="text-center">Added Date</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let owner of owners">
+                <td class="text-center text-muted" style="width: 80px;">#{{owner.owner_id}}</td>
+                <!-- <td class="text-center" style="width: 80px;">
+                    <img alt="" class="rounded-circle" src="./assets/images/avatars/1.jpg" width="40">
+                </td> -->
+                <td class="text-center">
+                    <h6>{{owner.owner_name|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <h6>{{owner.owner_email|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <h6>{{owner.owner_phone|titlecase}}</h6>
+                </td>
+
+                <td class="text-center">
+                    <div *ngFor="let pet of pets">
+                        <span class="pr-2 opacity-6" *ngIf="pet.pet_id === owner.owner_pet_no">
+                            {{ pet.pet_name | titlecase }}
+                        </span>
+                    </div>                            
+                </td>
+
+                <td class="text-center">
+                    <div style="color: green; font-size: 23px" *ngIf="owner.is_deleted == 0">
+                            <i class="fa-solid fa-check"></i></div>
+                    <div style="color: red; font-size: 23px" *ngIf="owner.is_deleted == 1">
+                            <i class="fa-solid fa-xmark"></i></div>
+                </td>
+                <td class="text-center">
+                    <span class="pr-2 opacity-6">
+                        <i class="fa fa-business-time"></i>
+                    </span> {{owner.add_date}} 
+                </td>
+                
+                <td class="text-center">
+                    <div class="btn-group-sm btn-group" role="group">
+                        <a href="http://localhost:4200/updateowner/{{owner.owner_id}}" class="btn-shadow btn btn-primary">Update</a>                            <button class="btn-shadow btn btn-danger" (click)="toggleOwner(owner.owner_id)">
+                            {{owner.is_deleted == 0 ? 'Remove' : 'Restore'}}
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    <div class="d-block p-4 text-center card-footer">
+        <!-- this.router.navigateByUrl(`/dashboard/${encodedId}`); -->
+        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" routerLink="/updateowner">
+            <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Owner</span>
+        </button>
+    </div>
+</div>
+
+
+<!-- Cats -->
+<div class="main-card mb-3 card container" id="cats" [hidden]="currentSection !== 'cats'">
+<div class="card-header">
+<div class="card-header-title font-size-lg text-capitalize font-weight-normal d-flex text-center">
+    <h4 class="container">Products4</h4></div>
+</div>
+<div class="table-responsive">
+    <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">#ID</th>
+                <!-- <th class="text-center">Avatar</th> -->
+                <th class="text-center">Name</th>
+                <th class="text-center">Status(display)</th>
+                <th class="text-center">Color</th>
+                <th class="text-center">Age(years)</th>
+                <th class="text-center">Added Date</th>
+                <th class="text-center">Clinic Name</th>
+                <th class="text-center">Store Name</th>
+                <!-- <th class="text-center">Available Supplies</th> -->
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let cat of cats">
+                <td class="text-center text-muted" style="width: 80px;">#{{cat.pet_id}}</td>
+                <!-- <td class="text-center" style="width: 80px;">
+                    <img alt="" class="rounded-circle" src="./assets/images/avatars/1.jpg" width="40">
+                </td> -->
+                <td class="text-center">
+                    <h6>{{cat.pet_name|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <div style="color: green; font-size: 23px" *ngIf="cat.is_deleted == 0">
+                            <i class="fa-solid fa-check"></i></div>
+                    <div style="color: red; font-size: 23px" *ngIf="cat.is_deleted == 1">
+                            <i class="fa-solid fa-xmark"></i></div>
+                </td>
+                <td class="text-center">
+                    <h6>{{cat.pet_color|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <h6>{{cat.pet_age|titlecase}}</h6>
+                </td>
+                <td class="text-center">
+                    <span class="pr-2 opacity-6">
+                        <i class="fa fa-business-time"></i>
+                    </span> {{cat.pet_add_date}} 
+                </td>
+                <td class="text-center">
+                    <div *ngFor="let clinic of clinics">
+                        <span class="pr-2 opacity-6" *ngIf="clinic.clinic_id === cat.pet_clinic_no">
+                            {{ clinic.clinic_name | titlecase }}
+                        </span>
+                    </div>                            
+                </td>
+                <td class="text-center">
+                    <div *ngFor="let store of stores">
+                        <span class="pr-2 opacity-6" *ngIf="store.store_id === cat.pet_store_no">
+                            {{ store.store_name | titlecase }}
+                        </span>
+                    </div> 
+                </td>
+                <td class="text-center">
+                    <div class="btn-group-sm btn-group" role="group">
+                        <a href="http://localhost:4200/updatepet/{{cat.pet_id}}" class="btn-shadow btn btn-primary">Update</a>                            
+                        <button class="btn-shadow btn btn-danger" (click)="togglePetCat(cat.pet_id)">
+                            {{cat.is_deleted == 0 ? 'Remove' : 'Restore'}}
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    <div class="d-block p-4 text-center card-footer">
+        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" routerLink="/updatepet">
+            <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Cat</span>
+        </button>
+    </div>
+</div>
+
+
+
+
+

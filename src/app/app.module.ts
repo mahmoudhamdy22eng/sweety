@@ -84,6 +84,9 @@ import { BestSellingComponent } from './home/best-selling/best-selling.component
 import { CandyBannerComponent } from './home/candy-banner/candy-banner.component';
 import { CandyInfoComponent } from './home/candy-info/candy-info.component';
 import { MarqueeComponent } from './home/marquee/marquee.component';
+import { AnalyticsComponent } from './admin/analytics/analytics.component';
+import { BlogsComponent } from './admin/blogs/blogs.component';
+import { FeaturesComponent } from './admin/features/features.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +142,6 @@ import { MarqueeComponent } from './home/marquee/marquee.component';
     PageNotFoundComponent,
     MessageComponent,
     AdminComponent,
-    DashboardComponent,
     ManageProductsComponent,
     ManageOrdersComponent,
     ManageUsersComponent,
@@ -162,6 +164,10 @@ import { MarqueeComponent } from './home/marquee/marquee.component';
     CandyBannerComponent,
     CandyInfoComponent,
     MarqueeComponent,
+    DashboardComponent,
+    AnalyticsComponent,
+    BlogsComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,
