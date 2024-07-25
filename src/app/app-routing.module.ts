@@ -58,7 +58,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { TermsContentComponent } from './terms/terms-content/terms-content.component';
 import { TermsComponent } from './terms/terms.component';
 import { ItemListComponent } from './wishlist/item-list/item-list.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
+import { WishlistComponent } from './account/wishlist/wishlist.component';
 import { AccountDashboardComponent } from './account/account-dashboard/account-dashboard.component';
 import { AddressBookComponent } from './account/address-book/address-book.component';
 import { AddressFormComponent } from './account/address-form/address-form.component';
@@ -66,6 +66,7 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { AnalyticsComponent } from './admin/analytics/analytics.component';
 import { BlogsComponent } from './admin/blogs/blogs.component';
 import { FeaturesComponent } from './admin/features/features.component';
+
 
 const routes: Routes = [
   {
@@ -125,6 +126,9 @@ const routes: Routes = [
       { path: 'sidebar', component: SidebarComponent },
       { path: 'order-history', component: OrderHistoryComponent },
       { path: 'personal-info', component: PersonalInfoComponent },
+      { path: 'address-book', component: AddressBookComponent},
+      { path: 'wishlist', component: WishlistComponent },
+      { path: 'cart', component: CartComponent },
     ],
   },
   { path: 'auth/login', component: LoginComponent },

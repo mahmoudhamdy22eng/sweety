@@ -16,15 +16,12 @@ footer .form-control {
   display: inline-block;
 }
 
-footer .btn-primary {
-  margin-top: 10px;
-}
 
 .navbar1{
-  background-color:rgb(39, 7, 57) !important;
+  background-color:#bbdefb !important;
   padding-top: 10px;
   padding-bottom: 10px;
-  /* border-top: 1px solid rgb(3, 123, 167); */
+  /* border-top: 1px solid #0d47a1; */
   border-bottom: none;
 }
 .navbar1:hover{
@@ -36,8 +33,9 @@ footer .btn-primary {
   color : white !important;
 }
 .txt2{
+  font-weight: bold !important;
   font-size: 20px !important;
-  color : rgb(253, 253, 253) !important;
+  color : #0d47a1 !important;
 }
 
 

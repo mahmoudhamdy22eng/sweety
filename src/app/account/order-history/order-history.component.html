@@ -1,21 +1,26 @@
-<div class="container mt-5">
-  <h4>Order History</h4>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Order ID</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <td>{{ order.id }}</td>
-        <td>{{ order.date | date }}</td>
-        <td>{{ order.status }}</td>
-        <td>{{ order.total | currency }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="card color mt-4">
+  <div class="card-body">
+    <h2 class="card-title container text-center">Order History</h2><br>
+    <div class="card-text">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="color">Order ID</th>
+            <th class="color">Date</th>
+            <th class="color">Status</th>
+            <th class="color">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.id }}</td>
+            <td>{{ order.date | date }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.total | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+

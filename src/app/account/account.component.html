@@ -1,37 +1,28 @@
-<div class="container mt-5">
-  <div class="row">
-    <!-- Sidebar -->
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-header">
-          <h5>Account Menu</h5>
+<section class="" style="background-color: rgb(187, 222, 251)">
+  <div class="container " style="background-color: rgb(187, 222, 251)">
+    <div class="row ">
+      <!-- Sidebar -->
+          <div class="col-md-3">
+            <div class="card text-center border-0">
+              <div class="card-header color">
+                <h5 class="card-title ">Account Menu</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item color" 
+                    *ngFor="let item of items" (click)="navigateTo(item.component)">
+                  <a class="links" [routerLink]="['/account', item.title.toLowerCase().replace(' ', '-')]">{{ item.title }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-9 ">
+            <app-account-dashboard></app-account-dashboard>
+            <router-outlet></router-outlet>
+          </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a routerLink="/account/order-history">Order History</a>
-          </li>
-          <li class="list-group-item">
-            <a routerLink="/account/personal-info">Personal Information</a>
-          </li>
-          <li class="list-group-item">
-            <a routerLink="/account/address-book">Address Book</a>
-          </li>
-          <li class="list-group-item">
-            <a routerLink="/account/wishlist">Wishlist</a>
-          </li>
-          <li class="list-group-item">
-            <a routerLink="/account/cart">Cart</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- Main Content -->
-    <div class="col-md-9">
-      <div class="card">
-        <div class="card-body">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
+
+
+
+  <br><br>
+</section>

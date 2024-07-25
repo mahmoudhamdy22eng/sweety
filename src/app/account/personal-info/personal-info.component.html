@@ -1,39 +1,43 @@
-<div class="container mt-5">
-  <h4>Personal Information</h4>
-  <form (ngSubmit)="updatePersonalInfo()">
-    <div class="mb-3">
-      <label for="name" class="form-label">Name</label>
-      <input
-        type="text"
-        id="name"
-        class="form-control"
-        [(ngModel)]="personalInfo.name"
-        name="name"
-        required
-      />
+<div class="card color mt-4">
+  <div class="card-body">
+    <h2 class="card-title container text-center">Personal Information</h2><br>
+    <div class="card-text">
+      <div class="row">
+        <div class="col-md-6 mt-2">
+          <h5>Name:</h5>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="personalInfo.name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="col-md-6 mt-2">
+          <h5>Email:</h5>
+          <input
+            type="email"
+            class="form-control"
+            [(ngModel)]="personalInfo.email"
+            name="email"
+            required
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mt-2">
+          <h5>Phone:</h5>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="personalInfo.phone"
+            name="phone"
+            required
+          />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Save</button>
+  </div>
     </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input
-        type="email"
-        id="email"
-        class="form-control"
-        [(ngModel)]="personalInfo.email"
-        name="email"
-        required
-      />
-    </div>
-    <div class="mb-3">
-      <label for="phone" class="form-label">Phone</label>
-      <input
-        type="text"
-        id="phone"
-        class="form-control"
-        [(ngModel)]="personalInfo.phone"
-        name="phone"
-        required
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
 </div>
+

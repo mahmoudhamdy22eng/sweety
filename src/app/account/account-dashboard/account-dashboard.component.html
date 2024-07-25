@@ -1,24 +1,32 @@
-<div class="container mt-5">
-  <h2>Account Dashboard</h2>
-  <div class="row">
-    <div class="col-md-3">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a routerLink="/account/dashboard">Dashboard</a>
-        </li>
-        <li class="list-group-item">
-          <a routerLink="/account/order-history">Order History</a>
-        </li>
-        <li class="list-group-item">
-          <a routerLink="/account/personal-info">Personal Information</a>
-        </li>
-        <li class="list-group-item">
-          <a routerLink="/account/address-book">Address Book</a>
-        </li>
-      </ul>
+    <!-- Main Content -->
+    <!-- < class="col-md-9 color"> -->
+      <div class="card color">
+        <div class="card-body">
+          <h2 class="card-title container text-center">Account details</h2><br>
+          <h4 class="card-subtitle mb-2 text-muted" style="color: #0d47a1;">Personal Information</h4>
+          <div class="card-text ">
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <h5>Name:</h5>
+                {{ profile.name }}
+              </div>
+              <div class="col-md-6 mt-2">
+                <h5>Email:</h5>
+                {{ profile.email }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <h5>Phone:</h5>
+                {{ profile.phone }}
+              </div>
+              <div class="col-md-6 mt-2">
+                <h5>Address:</h5>
+                {{ profile.address }}
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-9">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+  
+

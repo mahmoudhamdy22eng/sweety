@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountDashboardComponent implements OnInit {
   constructor() {}
+  profile: any;
 
   ngOnInit(): void {}
 }

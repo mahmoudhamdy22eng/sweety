@@ -1,34 +1,36 @@
-<div class="container mt-5">
-  <h4>Shopping Cart</h4>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of cartItems">
-        <td>{{ item.name }}</td>
-        <td>
-          <input
-            type="number"
-            class="form-control"
-            [value]="item.quantity"
-            (change)="updateQuantity(item.id, $event)"
-          />
-        </td>
-        <td>{{ item.price | currency }}</td>
-        <td>{{ item.price * item.quantity | currency }}</td>
-        <td>
-          <button class="btn btn-danger" (click)="removeFromCart(item.id)">
-            <i class="fas fa-trash-alt"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="card color ">
+  <div class="card-body">
+    <h2 class="card-title container text-center">Shopping Cart</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="color">Product</th>
+          <th class="color">Quantity</th>
+          <th class="color">Price</th>
+          <th class="color">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.name }}</td>
+          <td>
+            <input
+              type="number"
+              class="form-control"
+              [value]="item.quantity"
+              (change)="updateQuantity(item.id, $event)"
+            />
+          </td>
+          <td>{{ item.price | currency }}</td>
+          <td>{{ item.price * item.quantity | currency }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="removeFromCart(item.id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+

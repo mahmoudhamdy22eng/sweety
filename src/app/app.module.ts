@@ -167,7 +167,8 @@ import { FeaturesComponent } from './admin/features/features.component';
     DashboardComponent,
     AnalyticsComponent,
     BlogsComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,
@@ -176,6 +177,7 @@ import { FeaturesComponent } from './admin/features/features.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    
     
   ],
   providers: [ProductService, CartService, CheckoutService],

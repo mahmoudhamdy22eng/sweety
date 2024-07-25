@@ -1,0 +1,39 @@
+<div class="card color mt-4">
+    <div class="card-body">
+      <h2 class="card-title container text-center">Wishlist</h2><br>
+      <div class="card-text">
+        <div class="row" *ngFor="let item of wishlistItems">
+          <div class="col-md-6 mt-2">
+            <h5>Item Name:</h5>
+            <input
+              type="text"
+              class="form-control"
+              value="{{item.name}}"
+              readonly
+            />
+          </div>
+          <div class="col-md-6 mt-2">
+            <h5>Price:</h5>
+            <input
+              type="text"
+              class="form-control"
+              value="{{item.price}}"
+              name="price"
+              readonly
+            />
+          </div>
+          <div class="col-md-12 mt-2">
+            <h5>Description:</h5>
+            <textarea
+              class="form-control"
+              value="{{item.description}}"
+              name="description"
+              readonly
+            ></textarea>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary mt-2">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  

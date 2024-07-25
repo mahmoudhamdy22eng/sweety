@@ -1,5 +1,6 @@
 .color{
     background-color: rgb(187, 222, 251) !important;
     color: #0d47a1 !important;
-    border-radius: 15px;
+    border-top: 1px solid #0d47a1;
+    border-left: 1px solid #0d47a1;
   }
