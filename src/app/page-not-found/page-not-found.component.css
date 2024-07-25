@@ -4,19 +4,29 @@ body {
   background: url('/assets/images/error.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 100vh;
+  /* height: 200vh; To enable scrolling */
 }
 .button-container {
-  margin-bottom: 60px; /* Adjust as necessary */
+  position: fixed;
+  bottom: 100px; /* Adjust based on the position of the text in the background image */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
 }
-.return-button {
-  width: 360px;
-  height: 60px;
-  /* background: url('return_to_home_button.png') no-repeat center center; */
-  background-size: contain;
-  border: none;
-  cursor: pointer;
+.custom-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+  background: linear-gradient(to right, #fff, #ccc);
+  border: 1px solid #000;
+  border-radius: 30px;
+  text-align: center;
+  /* transition: background 0.3s; */
+}
+.custom-button:hover {
+  background: linear-gradient(to right, #ccc, #fff);
 }

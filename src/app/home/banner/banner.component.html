@@ -25,16 +25,19 @@
   ></a>
 </div> -->
 <br>
-<div>
-  <p class="text-start txt1 container">Shop sweets, treats, and more at <span class="txt11">SoSweet</span>, the UK's #1 <span class="txt11">Online Sweet Shop</span>
 <div class="container">
-  <div class="banner-container rounded">
-    <div
-      class="banner-image"
-      *ngFor="let banner of banners"
-      [ngStyle]="{ 'background-image': 'url(' + banner.image + ')' }"
-    >
-      <a [href]="banner.link" class="banner-link"></a>
+  <div class="row">
+    <div class="col-12">
+      <p class="text-start txt1">Shop sweets, treats, and more at <span class="txt11">SoSweet</span>, the UK's #1 <span class="txt11">Online Sweet Shop</span>
+      <div class="banner-container rounded">
+        <div
+          class="banner-image"
+          *ngFor="let banner of banners"
+          [ngStyle]="{ 'background-image': 'url(' + banner.image + ')' }"
+        >
+          <a [href]="banner.link" class="banner-link"></a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

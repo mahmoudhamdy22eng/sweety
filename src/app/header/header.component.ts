@@ -12,12 +12,60 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) {}
 
+  menuItems = [
+    {
+      title: 'Best Sellers',
+      link: '/bestsellers',
+      subMenu: []
+    },
+    {
+      title: 'By Candy Type',
+      link: '/pages/bulk-candy',
+      subMenu: [
+        {
+          title: 'Individually Wrapped Candy',
+          link: '/collections/individually-wrapped-candy',
+          imgSrc: '//www.candystore.com/cdn/shop/files/Wrapped.jpg?v=1716897526&amp;width=85'
+        },
+        {
+          title: 'Gummy Candy',
+          link: '/collections/gummy-candy',
+          imgSrc: '//www.candystore.com/cdn/shop/files/Gummy.jpg?v=1716897526&amp;width=85'
+        },
+        // add other sub-menu items here
+      ]
+    },
+    {
+      title: 'By Color',
+      link: '/pages/colors',
+      subMenu: [
+        {
+          title: 'Blue Candy',
+          link: '/collections/blue-candy',
+          imgSrc: '//www.candystore.com/cdn/shop/files/blue.webp?v=1716895601&amp;width=85'
+        },
+        {
+          title: 'Pink Candy',
+          link: '/collections/pink-candy',
+          imgSrc: '//www.candystore.com/cdn/shop/files/pink.webp?v=1716895601&amp;width=85'
+        },
+        // add other sub-menu items here
+      ]
+    },
+    // add other menu items here
+  ];
+
+  generateId(title: string): string {
+    return 'HeaderMenu-' + title.replace(/\s+/g, '-').toLowerCase();
+  }
+
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.showHeaderFooter =
           ![
             '/admin',
+            '/page-not-found',
             
 
           ].some((route) => event.url.startsWith(route));

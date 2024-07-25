@@ -1,17 +1,16 @@
-<div class="container mt-5">
-  <h4>Delivery Options</h4>
-  <form>
-    <div *ngFor="let method of deliveryMethods" class="form-check">
-      <input
-        type="radio"
-        class="form-check-input"
-        [id]="method"
-        [value]="method"
-        name="deliveryMethod"
-        [(ngModel)]="selectedMethod"
-        (change)="updateDeliveryMethod(method)"
-      />
-      <label class="form-check-label" [for]="method">{{ method }}</label>
+<div class="container mt-5 color py-3 mb-5">
+  <h4 class="text-center">Delivery Options</h4>
+  <div class="card">
+    <div class="card-body">
+      <form>
+        <div class="form-check" *ngFor="let method of deliveryMethods">
+          <input class="form-check-input" type="radio" name="deliveryMethod"
+                 id="{{method}}" [(ngModel)]="selectedMethod"
+                 (change)="updateDeliveryMethod(method)" [value]="method"/>
+          <label class="form-check-label" for="{{method}}">{{ method }}</label>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
+

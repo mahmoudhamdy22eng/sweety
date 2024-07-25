@@ -87,6 +87,8 @@ import { MarqueeComponent } from './home/marquee/marquee.component';
 import { AnalyticsComponent } from './admin/analytics/analytics.component';
 import { BlogsComponent } from './admin/blogs/blogs.component';
 import { FeaturesComponent } from './admin/features/features.component';
+import { BestsellerComponent } from './bestseller/bestseller.component';
+import { BuffetsComponent } from './buffets/buffets.component';
 
 @NgModule({
   declarations: [
@@ -169,6 +171,8 @@ import { FeaturesComponent } from './admin/features/features.component';
     BlogsComponent,
     FeaturesComponent,
     WishlistComponent,
+    BestsellerComponent,
+    BuffetsComponent,
   ],
   imports: [
     BrowserModule,

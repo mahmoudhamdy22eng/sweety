@@ -66,9 +66,13 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { AnalyticsComponent } from './admin/analytics/analytics.component';
 import { BlogsComponent } from './admin/blogs/blogs.component';
 import { FeaturesComponent } from './admin/features/features.component';
+import { BestsellerComponent } from './bestseller/bestseller.component';
+import { BuffetsComponent } from './buffets/buffets.component';
 
 
 const routes: Routes = [
+  { path : 'bestsellers', component : BestsellerComponent },
+  { path : 'buffets', component : BuffetsComponent },
   {
     path: '',
     component: HomeComponent,
@@ -203,21 +207,22 @@ const routes: Routes = [
     component: WishlistComponent,
     children: [{ path: 'items', component: ItemListComponent }],
   },
-  {
-    path: 'admin',
-    component: AdminComponent,
-    children: [
-      { path: 'login', component: AdminComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      // { path: 'aheader', component: AHeaderComponent },
-      // { path: 'afooter', component: AFooterComponent },
-      { path: 'manage-products', component: ManageProductsComponent },
-      {path: 'analytics', component: AnalyticsComponent},
-      {path: 'blogs', component: BlogsComponent},
-      {path:'features', component: FeaturesComponent},
-      { path: 'manage-orders', component: ManageOrdersComponent },
-      { path: 'manage-users', component: ManageUsersComponent },
-    ],
+    {
+      path: 'admin',
+      redirectTo: 'admin/manage-products',
+      pathMatch: 'full'
+    },
+    {
+      path: 'admin',
+      component: AdminComponent,
+      children: [
+        { path: 'manage-products', component: ManageProductsComponent },
+        {path: 'analytics', component: AnalyticsComponent},
+        {path: 'blogs', component: BlogsComponent},
+        {path:'features', component: FeaturesComponent},
+        { path: 'manage-orders', component: ManageOrdersComponent },
+        { path: 'manage-users', component: ManageUsersComponent },
+      ],
   },
   {
     path: 'maintenance',

@@ -12,13 +12,18 @@ export class FooterComponent {
 
   constructor(private router: Router) {}
 
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.showHeaderFooter =
           ![
             '/admin',
-
+            '/page-not-found',
           ].some((route) => event.url.startsWith(route));
       }
     });

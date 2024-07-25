@@ -8,3 +8,7 @@
     color: rgb(0, 174, 239);
     text-decoration: none;
 }
+.txt11:hover{
+  color: #ff69b4;
+  text-decoration: underline;
+}

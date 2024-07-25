@@ -1,20 +1,15 @@
 
-<nav 
-    class=" navbar1 navbar-expand-lg navbar-light bg-light shadow-sm"
-    *ngIf="showHeaderFooter">
+<nav class="navbar1 navbar-expand-lg navbar-light bg-light shadow-sm" *ngIf="showHeaderFooter" 
+        (click)="scrollToTop()">
   <div class="container-fluid d-flex justify-content-center">
-      
-        <a class="back-to-top text-sm block  font-bold 
-                  text-center text-current p-6  
-                  cc-animate-init cc-animate-in txt2"
-              data-cc-animate="in" data-cc-animate-init="" href="#"
-              style="text-decoration: none;"
-              > 
-              Back to top <i class="fa-solid fa-angle-up"></i>
-        </a>
-      
+    <a class="back-to-top text-sm block font-bold text-center text-current p-6 cc-animate-init cc-animate-in txt2"
+       data-cc-animate="in" data-cc-animate-init="" 
+       style="text-decoration: none; ">
+      Back to top <i class="fa-solid fa-angle-up"></i>
+    </a>
   </div>
 </nav>
+
 
 
 <footer class="bg-dark text-white py-4" *ngIf="showHeaderFooter"

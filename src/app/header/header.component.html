@@ -1,3 +1,4 @@
+<!-- 1st navbar -->
 <nav
   class="navbar1 navbar-expand-lg navbar-light bg-light shadow-sm"
   *ngIf="showHeaderFooter"
@@ -20,6 +21,7 @@
   </div>
 </nav>
 
+<!-- 2nd navbar -->
 <nav
   class="navbar navbar-expand-lg navbar-light bg-light shadow-sm"
   *ngIf="showHeaderFooter"
@@ -63,6 +65,68 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/account" routerLinkActive="active"><i class="fa-regular fa-user"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- 3rd navbar -->
+<nav class="header__inline-menu navbar-expand-lg navbar3" *ngIf="showHeaderFooter">
+  <div class="container d-flex justify-content-center" >
+    <button 
+      class="navbar-toggler btn2"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav2"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >More!
+      <!-- <span class="navbar-toggler-icon "></span> -->
+      <!-- <span class="sr-only">Toggle navigation</span> -->
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav2">
+      <ul class="list-menu list-menu--inline navbar-nav " role="list">
+        <li class="menu-list-item nav-item" *ngFor="let item of menuItems">
+          <a [attr.id]="generateId(item.title)" 
+             [href]="item.link" 
+             class="nav-link2 header__menu-item list-menu__item link link--text focus-inset text-center">
+            <span>{{ item.title }}</span>
+            <svg *ngIf="item.subMenu.length > 0" aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+            </svg>
+          </a>
+          <div *ngIf="item.subMenu.length > 0" class="mega-menu justify-content-center">
+            <ul class="mega-menu__list" role="list">
+              <li class="menu-item__w-image__noflex text-center" *ngFor="let subItem of item.subMenu">
+                <a [attr.id]="generateId(subItem.title)" 
+                   [href]="subItem.link" 
+                   class="mega-menu__link mega-menu__link--level-2 link text-center">
+                  <div class="menu-item__w-image">
+                    <div class="img-container">
+                      <img [src]="subItem.imgSrc" alt="" [srcset]="subItem.imgSrc + ' 85w'" width="85" height="85">
+                    </div>
+                    {{ subItem.title }}
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="bottom-button-container justify-content-center">
+              <a [href]="item.link" class="mega-menu__link link cta__button--rounded">View all</a>
+            </div>
+          </div>
+        </li>
+        <li class="menu-list-item">
+          <a id="HeaderMenu-candy-buffets" routerLink="/buffets" class="nav-link2 header__menu-item list-menu__item link link--text focus-inset text-center">
+            <span>Candy Buffets</span>
+          </a>
+        </li>
+        <li class="menu-list-item">
+          <a id="HeaderMenu-faqs" routerLink="/faq" class="nav-link2 header__menu-item list-menu__item link link--text focus-inset text-center ">
+            <span>FAQS</span>
+          </a>
         </li>
       </ul>
     </div>

@@ -1,6 +1,6 @@
-<div class="container mt-5">
-  <h4>Order Summary</h4>
-  <div class="card">
+<div class="container mt-5 color py-3">
+  <h4 class="text-center ">Order Summary</h4>
+  <div class="card color">
     <div class="card-body">
       <h5 class="card-title">Cart Items</h5>
       <ul class="list-group mb-3">
@@ -24,7 +24,8 @@
       <p>{{ paymentMethod }}</p>
       <h5 class="card-title">Total</h5>
       <p>{{ total | currency }}</p>
-      <button class="btn btn-success" (click)="placeOrder()">
+      <button class="btn btn-primary mt-2"
+      style="background-color: #0d47a1; border: none" (click)="placeOrder()">
         Place Order
       </button>
     </div>

@@ -27,6 +27,7 @@ footer .form-control {
 .navbar1:hover{
   /* background-color:#FF6F61 !important; */
   text-decoration: underline !important;
+  cursor: pointer;
 }
 .head1{
   font-size: 90% !important;
