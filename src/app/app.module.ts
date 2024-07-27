@@ -1,5 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -89,6 +91,9 @@ import { BlogsComponent } from './admin/blogs/blogs.component';
 import { FeaturesComponent } from './admin/features/features.component';
 import { BestsellerComponent } from './bestseller/bestseller.component';
 import { BuffetsComponent } from './buffets/buffets.component';
+import { NewproductComponent } from './admin/newproduct/newproduct.component';
+import { UpdateproductComponent } from './admin/updateproduct/updateproduct.component';
+import { SuccessmodalComponent } from './admin/successmodal/successmodal.component';
 
 @NgModule({
   declarations: [
@@ -173,6 +178,9 @@ import { BuffetsComponent } from './buffets/buffets.component';
     WishlistComponent,
     BestsellerComponent,
     BuffetsComponent,
+    NewproductComponent,
+    UpdateproductComponent,
+    SuccessmodalComponent,
   ],
   imports: [
     BrowserModule,
@@ -181,7 +189,8 @@ import { BuffetsComponent } from './buffets/buffets.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    MatDialogModule,
+    MatButtonModule,   
     
   ],
   providers: [ProductService, CartService, CheckoutService],

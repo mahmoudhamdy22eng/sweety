@@ -9,14 +9,132 @@ import { ApiService } from 'src/app/api.service';
 })
 export class ManageProductsComponent {
 
-  
+  products: any[] = [];
+  categories: any[] = [];
+  userId: any;
+
+  // currentSection: string = 'sweets'; // Default to 'sweets' section
+
+  constructor(private api: ApiService, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    const hashedId = this.route.snapshot.paramMap.get('id');
+    if (hashedId) {
+      this.userId = atob(hashedId);
+    }
+
+    let cond = this.userId ? `product_id=${this.userId}` : '';
+    this.api.getProducts().subscribe({
+      next: (data: any) => {
+        this.products = data;
+      },
+      error: (err: any) => {
+        console.error('Error fetching products:', err);
+      }
+    });
+
+    this.api.getProductCategories().subscribe({
+      next: (data: any) => {
+        this.categories = data;
+      },
+      error: (err: any) => {
+        console.error('Error fetching categories:', err);
+      }
+    });
+  }
+
+  // Utility functions for encoding/decoding IDs
+  encodeId(id: string): string {
+    return btoa(id);
+  }
+
+  decodeId(encodedId: string): string {
+    return atob(encodedId);
+  }
+
+  // Function to delete a product
+  toggleProduct(productId: number): void {
+    const product = this.products.find((product: any) => product.id === productId);
+    if (product) {
+      const isDeletedProduct = product.is_deleted === 1 ? 0 : 1;
+
+      this.api.updateProduct(productId, { ...product, is_deleted: isDeletedProduct }).subscribe({
+        next: (data: any) => {
+          const productIndex = this.products.findIndex((product: any) => product.id === productId);
+          if (productIndex !== -1) {
+            this.products[productIndex].is_deleted = isDeletedProduct;
+          } else {
+            console.error('Product not found in local products array after API update.');
+          }
+        },
+        error: (err: any) => {
+          console.error('Error updating product:', err);
+        }
+      });
+    }
+  }
+
+  toggleHasNutritionalInfo(productId: number): void {
+    const product = this.products.find((product: any) => product.id === productId);
+    if (product) {
+      const newHasNutritionalInfo = product.HasNutritionalInfo === 0 ? 1 : 0;
+
+      this.api.updateProduct(productId, { ...product, HasNutritionalInfo: newHasNutritionalInfo }).subscribe({
+        next: (data: any) => {
+          const productIndex = this.products.findIndex((product: any) => product.id === productId);
+          if (productIndex !== -1) {
+            this.products[productIndex].HasNutritionalInfo = newHasNutritionalInfo;
+          } else {
+            console.error('Product not found in local products array after API update.');
+          }
+        },
+        error: (err: any) => {
+          console.error('Error updating product:', err);
+        }
+      });
+    }
+  }
+
+  toggleIsCustomizable(productId: number): void {
+    const product = this.products.find((product: any) => product.id === productId);
+    if (product) {
+      const newIsCustomizable = product.IsCustomizable === 0 ? 1 : 0;
+
+      this.api.updateProduct(productId, { ...product, IsCustomizable: newIsCustomizable }).subscribe({
+        next: (data: any) => {
+          const productIndex = this.products.findIndex((product: any) => product.id === productId);
+          if (productIndex !== -1) {
+            this.products[productIndex].IsCustomizable = newIsCustomizable;
+          } else {
+            console.error('Product not found in local products array after API update.');
+          }
+        },
+        error: (err: any) => {
+          console.error('Error updating product:', err);
+        }
+      });
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   clinics:any=[];
   cats:any=[];
   dogs:any=[];
   stores:any=[];
   owners:any=[];
   pets:any=[];
-  userId: any;
+  // userId: any;
 
   currentSection: string = 'sweets'; // Default to 'stores' section
 
@@ -130,154 +248,154 @@ export class ManageProductsComponent {
 
   
 
-    constructor (private api:ApiService , private route:ActivatedRoute) {
-    }
+    // constructor (private api:ApiService , private route:ActivatedRoute) {
+    // }
 
     category =[{name:"Sweets",route:'sweets'},{name:"Snacks",route:'snacks'},
                 {name:"Drinks",route:'drinks'},
                 {name:"Ice Cream",route:'icecream'}];
 
-// Function to encode ID from Base64
-    encodeId(id: string): string {
-        return btoa(id);
-      }
-// Function to decode ID from Base64
-    decodeId(encodedId: string): string {
-      return atob(encodedId);
-    }
+// // Function to encode ID from Base64
+//     encodeId(id: string): string {
+//         return btoa(id);
+//       }
+// // Function to decode ID from Base64
+//     decodeId(encodedId: string): string {
+//       return atob(encodedId);
+//     }
 
-    ngOnInit(): void {
+    // ngOnInit(): void {
 
-    // stores
-    const hashedId = this.route.snapshot.paramMap.get('id');
-    if (hashedId) {
-      this.userId = atob(hashedId);
-    } else {
-      // console.error('ID parameter is missing');
-    }    
-    console.log(this.userId)
-      if(this.userId != null){
-        let cond = 'store_id='+this.userId;
-        this.api.get_stores(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.stores=data;
-        }})
-      }else{
-        let cond = '';
+    // // stores
+    // const hashedId = this.route.snapshot.paramMap.get('id');
+    // if (hashedId) {
+    //   this.userId = atob(hashedId);
+    // } else {
+    //   // console.error('ID parameter is missing');
+    // }    
+    // console.log(this.userId)
+    //   if(this.userId != null){
+    //     let cond = 'store_id='+this.userId;
+    //     this.api.get_stores(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.stores=data;
+    //     }})
+    //   }else{
+    //     let cond = '';
 
-        this.api.get_stores(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.stores=data;
-        }})
-      }
+    //     this.api.get_stores(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.stores=data;
+    //     }})
+    //   }
 
-      // owners
-      // let idowner = this.route.snapshot.paramMap.get('id');
-      // console.log(idowner);
-      if(this.userId != null){
-        let cond = 'owner_id='+this.userId;
-        this.api.get_owners(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.owners=data;
-        }})
-      }else{
-        let cond = '';
+    //   // owners
+    //   // let idowner = this.route.snapshot.paramMap.get('id');
+    //   // console.log(idowner);
+    //   if(this.userId != null){
+    //     let cond = 'owner_id='+this.userId;
+    //     this.api.get_owners(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.owners=data;
+    //     }})
+    //   }else{
+    //     let cond = '';
 
-        this.api.get_owners(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          for(let emp of data){
-            emp.newid=btoa(emp.id)
-            emp.file=this.api.baseURL+emp.file
-          }
-          this.owners=data;
-        }})
-      }
+    //     this.api.get_owners(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       for(let emp of data){
+    //         emp.newid=btoa(emp.id)
+    //         emp.file=this.api.baseURL+emp.file
+    //       }
+    //       this.owners=data;
+    //     }})
+    //   }
 
-      // pets
-      // let pets = this.route.snapshot.paramMap.get('id');
-      // console.log(pets);
-      if(this.userId != null){
-        let cond = 'pet_id='+this.userId;
-        this.api.get_pets(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.pets=data;
-        }})
-      }else{
-        let cond = '';
+    //   // pets
+    //   // let pets = this.route.snapshot.paramMap.get('id');
+    //   // console.log(pets);
+    //   if(this.userId != null){
+    //     let cond = 'pet_id='+this.userId;
+    //     this.api.get_pets(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.pets=data;
+    //     }})
+    //   }else{
+    //     let cond = '';
 
-        this.api.get_pets(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.pets=data;
-        }})
-      }
+    //     this.api.get_pets(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.pets=data;
+    //     }})
+    //   }
 
-    // cats
-      // let typepet = this.route.snapshot.paramMap.get('id');
-      // console.log(typepet);
-      if(this.userId != null){
-        let cond = 'pet_type_no=1 and pet_id='+this.userId;
-        this.api.get_pets(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.cats=data;
-        }})
-      }else{
-        let cond = 'pet_type_no=1';
+    // // cats
+    //   // let typepet = this.route.snapshot.paramMap.get('id');
+    //   // console.log(typepet);
+    //   if(this.userId != null){
+    //     let cond = 'pet_type_no=1 and pet_id='+this.userId;
+    //     this.api.get_pets(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.cats=data;
+    //     }})
+    //   }else{
+    //     let cond = 'pet_type_no=1';
 
-        this.api.get_pets(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.cats=data;
-        }})
-      }
+    //     this.api.get_pets(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.cats=data;
+    //     }})
+    //   }
 
-    // dogs
-      // let typepet2 = this.route.snapshot.paramMap.get('id');
-      // console.log(typepet2);
-      if(this.userId != null){
-        let cond = 'pet_type_no=2 and pet_id='+this.userId;
-        this.api.get_pets(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.dogs=data;
-        }})
-      }else{
-        let cond = 'pet_type_no=2';
+    // // dogs
+    //   // let typepet2 = this.route.snapshot.paramMap.get('id');
+    //   // console.log(typepet2);
+    //   if(this.userId != null){
+    //     let cond = 'pet_type_no=2 and pet_id='+this.userId;
+    //     this.api.get_pets(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.dogs=data;
+    //     }})
+    //   }else{
+    //     let cond = 'pet_type_no=2';
 
-        this.api.get_pets(cond)
-        .subscribe({next:(data:any)=>{
-          console.log(data[0]);
-          this.dogs=data;
-        }})
-      }
+    //     this.api.get_pets(cond)
+    //     .subscribe({next:(data:any)=>{
+    //       console.log(data[0]);
+    //       this.dogs=data;
+    //     }})
+    //   }
 
-    // clinics
-      // let idclinic = this.route.snapshot.paramMap.get('id');
-      //   console.log(idclinic);
-        if(this.userId != null){
-          let cond = 'clinic_id='+this.userId;
-          this.api.get_clinics(cond)
-          .subscribe({next:(data:any)=>{
-            console.log(data[0]);
-            this.clinics=data;
-          }})
-        }else{
-          let cond = '';
+    // // clinics
+    //   // let idclinic = this.route.snapshot.paramMap.get('id');
+    //   //   console.log(idclinic);
+    //     if(this.userId != null){
+    //       let cond = 'clinic_id='+this.userId;
+    //       this.api.get_clinics(cond)
+    //       .subscribe({next:(data:any)=>{
+    //         console.log(data[0]);
+    //         this.clinics=data;
+    //       }})
+    //     }else{
+    //       let cond = '';
 
-          this.api.get_clinics(cond)
-          .subscribe({next:(data:any)=>{
-            console.log(data[0]);
-            this.clinics=data;
-          }})
-        }
+    //       this.api.get_clinics(cond)
+    //       .subscribe({next:(data:any)=>{
+    //         console.log(data[0]);
+    //         this.clinics=data;
+    //       }})
+    //     }
     
-    }
+    // }
 
     // is_deleted(){
     //   if (this.stores['is_deleted'] == 1) {

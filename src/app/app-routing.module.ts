@@ -68,6 +68,9 @@ import { BlogsComponent } from './admin/blogs/blogs.component';
 import { FeaturesComponent } from './admin/features/features.component';
 import { BestsellerComponent } from './bestseller/bestseller.component';
 import { BuffetsComponent } from './buffets/buffets.component';
+import { NewproductComponent } from './admin/newproduct/newproduct.component';
+import { UpdateproductComponent } from './admin/updateproduct/updateproduct.component';
+import { SuccessmodalComponent } from './admin/successmodal/successmodal.component';
 
 
 const routes: Routes = [
@@ -217,6 +220,9 @@ const routes: Routes = [
       component: AdminComponent,
       children: [
         { path: 'manage-products', component: ManageProductsComponent },
+        { path: 'newproduct', component: NewproductComponent },
+        { path: 'updateproduct/:id', component: UpdateproductComponent },
+        { path: 'successmodal', component: SuccessmodalComponent },
         {path: 'analytics', component: AnalyticsComponent},
         {path: 'blogs', component: BlogsComponent},
         {path:'features', component: FeaturesComponent},

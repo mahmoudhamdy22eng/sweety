@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductService {
   constructor(private http: HttpClient) {}
-  private apiUrl = 'https://api.example.com/products';
+  private apiUrl = 'http://localhost:8000/api/products';
   getBannerData(): Observable<any[]> {
     return of([
       {
@@ -74,8 +74,11 @@ export class ProductService {
       },
     ]);
   }
-  getProducts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  // getProducts(): Observable<any[]> {
+  //   return this.http.get<any[]>(this.apiUrl);
+  // }
+  getProducts(cond: string = ''): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}?cond=${cond}`);
   }
 
   getCategories(): Observable<string[]> {
@@ -97,4 +100,6 @@ export class ProductService {
   getRelatedProducts(productId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/${productId}/related`);
   }
+
+  
 }

@@ -1,10 +1,47 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/models/product.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  private apiUrl = 'http://localhost:8000/api';
+
+  constructor(private http: HttpClient) { }
+
+  getProducts(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/products`);
+  }
+  addProduct(product: Product): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/products`, product);
+  }
+  updateProduct(productId: number, product: Product): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/products/${productId}`, product);
+  }
+  getProductById(productId: number): Observable<any> { // New method
+    return this.http.get<any>(`${this.apiUrl}/products/${productId}`);
+  }
+  
+
+  getProductCategories(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/productcategories`);
+  }
+
+  
+
+
+
+
+
+
+
+
+
+
   baseURL:any="http://localhost";
 
   imgstoreURL ="http://localhost/php/api/petstore/stores";
@@ -13,8 +50,7 @@ export class ApiService {
   imgownerURL ="http://localhost/php/api/petstore/owner";
   posts: any;
 
-  constructor(private  http:HttpClient) { 
-  }
+
   IsLoggedIn(){
     return !!localStorage.getItem('user-data-login');
   }

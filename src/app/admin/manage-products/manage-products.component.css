@@ -12,3 +12,29 @@
 .position{
     margin-right: 20px !important;
 }
+
+.btn-shadow.btn-info {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .btn-shadow.btn-warning {
+    background-color: #ffc107;
+    color: black;
+  }
+
+  .center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text-success {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .text-danger {
+    color: red;
+    font-weight: bold;
+  }
