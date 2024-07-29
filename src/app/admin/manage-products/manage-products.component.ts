@@ -25,22 +25,33 @@ export class ManageProductsComponent {
 
     let cond = this.userId ? `product_id=${this.userId}` : '';
     this.api.getProducts().subscribe({
-      next: (data: any) => {
-        this.products = data;
+      next: (products: any) => {
+        this.api.getProductCategories().subscribe({
+          next: (categories: any) => {
+            this.categories = categories;
+            this.products = products.map((product: any) => {
+              const category = this.categories.find((cat: any) => cat.CategoryID === product.CategoryID);
+              return { ...product, CategoryName: category ? category.CategoryName : 'Unknown' };
+            });
+          },
+          error: (err: any) => {
+            console.error('Error fetching categories:', err);
+          }
+        });
       },
       error: (err: any) => {
         console.error('Error fetching products:', err);
       }
     });
 
-    this.api.getProductCategories().subscribe({
-      next: (data: any) => {
-        this.categories = data;
-      },
-      error: (err: any) => {
-        console.error('Error fetching categories:', err);
-      }
-    });
+    // this.api.getProductCategories().subscribe({
+    //   next: (data: any) => {
+    //     this.categories = data;
+    //   },
+    //   error: (err: any) => {
+    //     console.error('Error fetching categories:', err);
+    //   }
+    // });
   }
 
   // Utility functions for encoding/decoding IDs

@@ -16,10 +16,10 @@
 
 
 <!-- Sweets Section -->
-<div class="main-card mb-3 card" id="sweets" [hidden]="currentSection !== 'sweets'">
+<div class="main-card mb-3 card mx-4" id="sweets" [hidden]="currentSection !== 'sweets'">
     <div class="card-header">
         <div class="container text-center">
-            <h2 class="mx-auto">Sweets</h2>
+            <h1 class="mx-auto">Sweets</h1>
         </div>
     </div>
     <div class="table-responsive">
@@ -31,8 +31,8 @@
             <th class="text-center">Description</th>
             <th class="text-center">Price</th>
             <th class="text-center">QuantityAvailable</th>
-            <th class="text-center">CategoryID</th>
-            <th class="text-center">AdminID</th>
+            <!-- <th class="text-center">CategoryID</th> -->
+            <!-- <th class="text-center">AdminID</th> -->
             <th class="text-center">IsCustomizable</th>
             <th class="text-center">HasNutritionalInfo</th>
             <th class="text-center">Image</th>
@@ -42,27 +42,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products">
+          <tr  *ngFor="let product of products | categoryFilter:'sweets'">
             <td class="text-center text-muted" style="width: 80px;">#{{product.id}}</td>
             <td class="text-center">
               <h4>{{product.name}}</h4>
             </td>
             <td class="text-center">
-              <h5>{{product.description}}</h5>
+              <h4>{{product.description}}</h4>
             </td>
             <td class="text-center">
-              <h5>{{product.price}}</h5>
+              <h4>{{product.price}}</h4>
             </td>
             <td class="text-center">
-              <h5>{{product.QuantityAvailable}}</h5>
+              <h4>{{product.QuantityAvailable}}</h4>
             </td>
-            <td class="text-center">
-              <h5>{{product.CategoryID}}</h5>
-            </td>
-            <td class="text-center">
-              <h5>{{product.AdminID}}</h5>
-            </td>
-
+            <!-- <td class="text-center">
+              <h4>{{product.CategoryName}}</h4>
+            </td> -->
+            <!-- <td class="text-center">
+              <h4>{{product.AdminID}}</h4>
+            </td> -->
             <td class="text-center">
                 <div class="center-content" [ngClass]="{'text-success': product.IsCustomizable === 1, 'text-danger': product.IsCustomizable === 0}">
                   current(<i class="fa-regular" [ngClass]="{'fa-thumbs-up': product.IsCustomizable === 1, 'fa-thumbs-down': product.IsCustomizable === 0}"></i>)
@@ -118,243 +117,280 @@
 
 
 <!-- Snacks -->
-<div class="main-card mb-3 card container" id="snacks" [hidden]="currentSection !== 'snacks'">
-<div class="card-header">
-    <div class="card-header-title font-size-lg text-capitalize font-weight-normal d-flex text-center">
-        <h4 class="container">Snacks</h4>
+<div class="main-card mb-3 card mx-4" id="sweets" [hidden]="currentSection !== 'snacks'">
+    <div class="card-header">
+        <div class="container text-center">
+            <h1 class="mx-auto">Snacks</h1>
+        </div>
     </div>
-</div>
-<div class="table-responsive">
-    <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+    <div class="table-responsive">
+      <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
         <thead>
-            <tr>
-                <th class="text-center">#ID</th>
-                <!-- <th class="text-center">Avatar</th> -->
-                <th class="text-center">Name</th>
-                <th class="text-center">Address</th>
-                <th class="text-center">Available Doctor</th>
-                <th class="text-center">Phone No.</th>
-                <th class="text-center">Status(display)</th>
-                <th class="text-center">Added Date</th>
-                <th class="text-center">Actions</th>
-            </tr>
+          <tr>
+            <th class="text-center">#ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">QuantityAvailable</th>
+            <th class="text-center">IsCustomizable</th>
+            <th class="text-center">HasNutritionalInfo</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Vendor</th>
+            <th class="text-center">Status(display)</th>
+            <th class="text-center">Actions</th>
+          </tr>
         </thead>
-        
         <tbody>
-            <tr *ngFor="let clinic of clinics">
-                <td class="text-center text-muted" style="width: 80px;">#{{clinic.clinic_id}}</td>
-                <!-- <td class="text-center" style="width: 80px;">
-                    <img alt="" class="rounded-circle" src="./assets/images/avatars/1.jpg" width="40">
-                </td> -->
-                <td class="text-center">
-                    <h6>{{clinic.clinic_name|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <h6>{{clinic.clinic_address|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <h6>{{clinic.clinic_doctor_name|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <h6>{{clinic.clinic_phone|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <div style="color: green; font-size: 23px" *ngIf="clinic.is_deleted == 0">
-                            <i class="fa-solid fa-check"></i></div>
-                    <div style="color: red; font-size: 23px" *ngIf="clinic.is_deleted == 1">
-                            <i class="fa-solid fa-xmark"></i></div>
-                </td>
-                <td class="text-center">
-                    <span class="pr-2 opacity-6">
-                        <i class="fa fa-business-time"></i>
-                    </span> {{clinic.clinic_add_date}} 
-                </td>
-                
-                <td class="text-center">
-                    <div class="btn-group-sm btn-group" role="group">
-                        <a href="http://localhost:4200/updateclinic/{{clinic.clinic_id}}" class="btn-shadow btn btn-primary">Update</a>                            
-                        <button class="btn-shadow btn btn-danger" (click)="toggleClinic(clinic.clinic_id)">
-                            {{clinic.is_deleted == 0 ? 'Remove' : 'Restore'}}
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            
-            </tbody>
-        </table>
+          <tr  *ngFor="let product of products | categoryFilter:'snacks'">
+            <td class="text-center text-muted" style="width: 80px;">#{{product.id}}</td>
+            <td class="text-center">
+              <h4>{{product.name}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.description}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.price}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.QuantityAvailable}}</h4>
+            </td>
+            <td class="text-center">
+                <div class="center-content" [ngClass]="{'text-success': product.IsCustomizable === 1, 'text-danger': product.IsCustomizable === 0}">
+                  current(<i class="fa-regular" [ngClass]="{'fa-thumbs-up': product.IsCustomizable === 1, 'fa-thumbs-down': product.IsCustomizable === 0}"></i>)
+                  <button class="btn btn-sm" [ngClass]="{'btn-danger': product.IsCustomizable === 1, 'btn-success': product.IsCustomizable === 0}" (click)="toggleIsCustomizable(product.id)">
+                    <i class="fa-solid" [ngClass]="{'fa-xmark': product.IsCustomizable === 1, 'fa-check': product.IsCustomizable === 0}"></i>
+                  </button>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="center-content" [ngClass]="{'text-success': product.HasNutritionalInfo === 1, 'text-danger': product.HasNutritionalInfo === 0}">
+                  current(<i class="fa-regular" [ngClass]="{'fa-thumbs-up': product.HasNutritionalInfo === 1, 'fa-thumbs-down': product.HasNutritionalInfo === 0}"></i>)
+                  <button class="btn btn-sm" [ngClass]="{'btn-danger': product.HasNutritionalInfo === 1, 'btn-success': product.HasNutritionalInfo === 0}" (click)="toggleHasNutritionalInfo(product.id)">
+                    <i class="fa-solid" [ngClass]="{'fa-xmark': product.HasNutritionalInfo === 1, 'fa-check': product.HasNutritionalInfo === 0}"></i>
+                  </button>
+                </div>
+              </td>
+
+            <td class="text-center">
+              <img [src]="product.image" class="img-fluid" width="100" />
+            </td>
+            <td class="text-center">
+              <h5>{{product.vendor}}</h5>
+            </td>
+            <td class="text-center">
+              <div style="color: green; font-size: 23px" *ngIf="product.is_deleted === 0">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div style="color: red; font-size: 23px" *ngIf="product.is_deleted === 1">
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="btn-group-sm btn-group" role="group">
+                <a [routerLink]="['/admin/updateproduct', product.id]" 
+                   class="btn-shadow btn btn-primary">Update</a>
+                <button class="btn-shadow btn btn-danger" (click)="toggleProduct(product.id)">
+                  {{product.is_deleted === 0 ? 'Remove' : 'Restore'}}
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="d-block p-4 text-center card-footer">
-        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" routerLink="/updateclinic">
-            <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Clinic</span>
-        </button>
+    <div class="d-flex justify-content-center card-footer">
+      <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" 
+              routerLink="/admin/newproduct">
+        <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Product</span>
+      </button>
     </div>
-</div>
+  </div>
 
 
 
 <!-- Drinks -->
-<div class="main-card mb-3 card container" id="drinks" [hidden]="currentSection !== 'drinks'">
-<div class="card-header">
-    <div class="card-header-title font-size-lg text-capitalize font-weight-normal d-flex text-center">
-        <h4 class="container">Drinks</h4>
+<div class="main-card mb-3 card mx-4" id="sweets" [hidden]="currentSection !== 'drinks'">
+    <div class="card-header">
+        <div class="container text-center">
+            <h1 class="mx-auto">Drinks</h1>
+        </div>
     </div>
-</div>
-<div class="table-responsive">
-    <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+    <div class="table-responsive">
+      <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
         <thead>
-            <tr>
-                <th class="text-center">#ID</th>
-                <!-- <th class="text-center">Avatar</th> -->
-                <th class="text-center">Name</th>
-                <th class="text-center">Email</th>
-                <th class="text-center">Phone No.</th>
-                <th class="text-center">Pet Name</th>
-                <th class="text-center">Status(display)</th>
-                <th class="text-center">Added Date</th>
-                <th class="text-center">Actions</th>
-            </tr>
+          <tr>
+            <th class="text-center">#ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">QuantityAvailable</th>
+            <th class="text-center">IsCustomizable</th>
+            <th class="text-center">HasNutritionalInfo</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Vendor</th>
+            <th class="text-center">Status(display)</th>
+            <th class="text-center">Actions</th>
+          </tr>
         </thead>
-        
         <tbody>
-            <tr *ngFor="let owner of owners">
-                <td class="text-center text-muted" style="width: 80px;">#{{owner.owner_id}}</td>
-                <!-- <td class="text-center" style="width: 80px;">
-                    <img alt="" class="rounded-circle" src="./assets/images/avatars/1.jpg" width="40">
-                </td> -->
-                <td class="text-center">
-                    <h6>{{owner.owner_name|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <h6>{{owner.owner_email|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <h6>{{owner.owner_phone|titlecase}}</h6>
-                </td>
+          <tr  *ngFor="let product of products | categoryFilter:'drinks'">
+            <td class="text-center text-muted" style="width: 80px;">#{{product.id}}</td>
+            <td class="text-center">
+              <h4>{{product.name}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.description}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.price}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.QuantityAvailable}}</h4>
+            </td>
+            <td class="text-center">
+                <div class="center-content" [ngClass]="{'text-success': product.IsCustomizable === 1, 'text-danger': product.IsCustomizable === 0}">
+                  current(<i class="fa-regular" [ngClass]="{'fa-thumbs-up': product.IsCustomizable === 1, 'fa-thumbs-down': product.IsCustomizable === 0}"></i>)
+                  <button class="btn btn-sm" [ngClass]="{'btn-danger': product.IsCustomizable === 1, 'btn-success': product.IsCustomizable === 0}" (click)="toggleIsCustomizable(product.id)">
+                    <i class="fa-solid" [ngClass]="{'fa-xmark': product.IsCustomizable === 1, 'fa-check': product.IsCustomizable === 0}"></i>
+                  </button>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="center-content" [ngClass]="{'text-success': product.HasNutritionalInfo === 1, 'text-danger': product.HasNutritionalInfo === 0}">
+                  current(<i class="fa-regular" [ngClass]="{'fa-thumbs-up': product.HasNutritionalInfo === 1, 'fa-thumbs-down': product.HasNutritionalInfo === 0}"></i>)
+                  <button class="btn btn-sm" [ngClass]="{'btn-danger': product.HasNutritionalInfo === 1, 'btn-success': product.HasNutritionalInfo === 0}" (click)="toggleHasNutritionalInfo(product.id)">
+                    <i class="fa-solid" [ngClass]="{'fa-xmark': product.HasNutritionalInfo === 1, 'fa-check': product.HasNutritionalInfo === 0}"></i>
+                  </button>
+                </div>
+              </td>
 
-                <td class="text-center">
-                    <div *ngFor="let pet of pets">
-                        <span class="pr-2 opacity-6" *ngIf="pet.pet_id === owner.owner_pet_no">
-                            {{ pet.pet_name | titlecase }}
-                        </span>
-                    </div>                            
-                </td>
-
-                <td class="text-center">
-                    <div style="color: green; font-size: 23px" *ngIf="owner.is_deleted == 0">
-                            <i class="fa-solid fa-check"></i></div>
-                    <div style="color: red; font-size: 23px" *ngIf="owner.is_deleted == 1">
-                            <i class="fa-solid fa-xmark"></i></div>
-                </td>
-                <td class="text-center">
-                    <span class="pr-2 opacity-6">
-                        <i class="fa fa-business-time"></i>
-                    </span> {{owner.add_date}} 
-                </td>
-                
-                <td class="text-center">
-                    <div class="btn-group-sm btn-group" role="group">
-                        <a href="http://localhost:4200/updateowner/{{owner.owner_id}}" class="btn-shadow btn btn-primary">Update</a>                            <button class="btn-shadow btn btn-danger" (click)="toggleOwner(owner.owner_id)">
-                            {{owner.is_deleted == 0 ? 'Remove' : 'Restore'}}
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            
-            </tbody>
-        </table>
+            <td class="text-center">
+              <img [src]="product.image" class="img-fluid" width="100" />
+            </td>
+            <td class="text-center">
+              <h5>{{product.vendor}}</h5>
+            </td>
+            <td class="text-center">
+              <div style="color: green; font-size: 23px" *ngIf="product.is_deleted === 0">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div style="color: red; font-size: 23px" *ngIf="product.is_deleted === 1">
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="btn-group-sm btn-group" role="group">
+                <a [routerLink]="['/admin/updateproduct', product.id]" 
+                   class="btn-shadow btn btn-primary">Update</a>
+                <button class="btn-shadow btn btn-danger" (click)="toggleProduct(product.id)">
+                  {{product.is_deleted === 0 ? 'Remove' : 'Restore'}}
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="d-block p-4 text-center card-footer">
-        <!-- this.router.navigateByUrl(`/dashboard/${encodedId}`); -->
-        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" routerLink="/updateowner">
-            <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Owner</span>
-        </button>
+    <div class="d-flex justify-content-center card-footer">
+      <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" 
+              routerLink="/admin/newproduct">
+        <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Product</span>
+      </button>
     </div>
-</div>
+  </div>
 
 
 <!-- Ice Cream -->
-<div class="main-card mb-3 card container" id="icecream" [hidden]="currentSection !== 'icecream'">
-<div class="card-header">
-<div class="card-header-title font-size-lg text-capitalize font-weight-normal d-flex text-center">
-    <h4 class="container">Ice Cream</h4></div>
-</div>
-<div class="table-responsive">
-    <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+<div class="main-card mb-3 card mx-4" id="sweets" [hidden]="currentSection !== 'icecream'">
+    <div class="card-header">
+        <div class="container text-center">
+            <h1 class="mx-auto">Ice Cream</h1>
+        </div>
+    </div>
+    <div class="table-responsive">
+      <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
         <thead>
-            <tr>
-                <th class="text-center">#ID</th>
-                <!-- <th class="text-center">Avatar</th> -->
-                <th class="text-center">Name</th>
-                <th class="text-center">Status(display)</th>
-                <th class="text-center">Color</th>
-                <th class="text-center">Age(years)</th>
-                <th class="text-center">Added Date</th>
-                <th class="text-center">Clinic Name</th>
-                <th class="text-center">Store Name</th>
-                <!-- <th class="text-center">Available Supplies</th> -->
-                <th class="text-center">Actions</th>
-            </tr>
+          <tr>
+            <th class="text-center">#ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">QuantityAvailable</th>
+            <th class="text-center">IsCustomizable</th>
+            <th class="text-center">HasNutritionalInfo</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Vendor</th>
+            <th class="text-center">Status(display)</th>
+            <th class="text-center">Actions</th>
+          </tr>
         </thead>
-        
         <tbody>
-            <tr *ngFor="let cat of cats">
-                <td class="text-center text-muted" style="width: 80px;">#{{cat.pet_id}}</td>
-                <!-- <td class="text-center" style="width: 80px;">
-                    <img alt="" class="rounded-circle" src="./assets/images/avatars/1.jpg" width="40">
-                </td> -->
-                <td class="text-center">
-                    <h6>{{cat.pet_name|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <div style="color: green; font-size: 23px" *ngIf="cat.is_deleted == 0">
-                            <i class="fa-solid fa-check"></i></div>
-                    <div style="color: red; font-size: 23px" *ngIf="cat.is_deleted == 1">
-                            <i class="fa-solid fa-xmark"></i></div>
-                </td>
-                <td class="text-center">
-                    <h6>{{cat.pet_color|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <h6>{{cat.pet_age|titlecase}}</h6>
-                </td>
-                <td class="text-center">
-                    <span class="pr-2 opacity-6">
-                        <i class="fa fa-business-time"></i>
-                    </span> {{cat.pet_add_date}} 
-                </td>
-                <td class="text-center">
-                    <div *ngFor="let clinic of clinics">
-                        <span class="pr-2 opacity-6" *ngIf="clinic.clinic_id === cat.pet_clinic_no">
-                            {{ clinic.clinic_name | titlecase }}
-                        </span>
-                    </div>                            
-                </td>
-                <td class="text-center">
-                    <div *ngFor="let store of stores">
-                        <span class="pr-2 opacity-6" *ngIf="store.store_id === cat.pet_store_no">
-                            {{ store.store_name | titlecase }}
-                        </span>
-                    </div> 
-                </td>
-                <td class="text-center">
-                    <div class="btn-group-sm btn-group" role="group">
-                        <a href="http://localhost:4200/updatepet/{{cat.pet_id}}" class="btn-shadow btn btn-primary">Update</a>                            
-                        <button class="btn-shadow btn btn-danger" (click)="togglePetCat(cat.pet_id)">
-                            {{cat.is_deleted == 0 ? 'Remove' : 'Restore'}}
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            
-            </tbody>
-        </table>
+          <tr  *ngFor="let product of products | categoryFilter:'icecream'">
+            <td class="text-center text-muted" style="width: 80px;">#{{product.id}}</td>
+            <td class="text-center">
+              <h4>{{product.name}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.description}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.price}}</h4>
+            </td>
+            <td class="text-center">
+              <h4>{{product.QuantityAvailable}}</h4>
+            </td>
+            <td class="text-center">
+                <div class="center-content" [ngClass]="{'text-success': product.IsCustomizable === 1, 'text-danger': product.IsCustomizable === 0}">
+                  current(<i class="fa-regular" [ngClass]="{'fa-thumbs-up': product.IsCustomizable === 1, 'fa-thumbs-down': product.IsCustomizable === 0}"></i>)
+                  <button class="btn btn-sm" [ngClass]="{'btn-danger': product.IsCustomizable === 1, 'btn-success': product.IsCustomizable === 0}" (click)="toggleIsCustomizable(product.id)">
+                    <i class="fa-solid" [ngClass]="{'fa-xmark': product.IsCustomizable === 1, 'fa-check': product.IsCustomizable === 0}"></i>
+                  </button>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="center-content" [ngClass]="{'text-success': product.HasNutritionalInfo === 1, 'text-danger': product.HasNutritionalInfo === 0}">
+                  current(<i class="fa-regular" [ngClass]="{'fa-thumbs-up': product.HasNutritionalInfo === 1, 'fa-thumbs-down': product.HasNutritionalInfo === 0}"></i>)
+                  <button class="btn btn-sm" [ngClass]="{'btn-danger': product.HasNutritionalInfo === 1, 'btn-success': product.HasNutritionalInfo === 0}" (click)="toggleHasNutritionalInfo(product.id)">
+                    <i class="fa-solid" [ngClass]="{'fa-xmark': product.HasNutritionalInfo === 1, 'fa-check': product.HasNutritionalInfo === 0}"></i>
+                  </button>
+                </div>
+              </td>
+
+            <td class="text-center">
+              <img [src]="product.image" class="img-fluid" width="100" />
+            </td>
+            <td class="text-center">
+              <h5>{{product.vendor}}</h5>
+            </td>
+            <td class="text-center">
+              <div style="color: green; font-size: 23px" *ngIf="product.is_deleted === 0">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div style="color: red; font-size: 23px" *ngIf="product.is_deleted === 1">
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="btn-group-sm btn-group" role="group">
+                <a [routerLink]="['/admin/updateproduct', product.id]" 
+                   class="btn-shadow btn btn-primary">Update</a>
+                <button class="btn-shadow btn btn-danger" (click)="toggleProduct(product.id)">
+                  {{product.is_deleted === 0 ? 'Remove' : 'Restore'}}
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="d-block p-4 text-center card-footer">
-        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" routerLink="/updatepet">
-            <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Cat</span>
-        </button>
+    <div class="d-flex justify-content-center card-footer">
+      <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-success btn-lg" 
+              routerLink="/admin/newproduct">
+        <span class="mr-2"><i class="fa-solid fa-circle-plus"></i> Add New Product</span>
+      </button>
     </div>
-</div>
+  </div>
 
 
 

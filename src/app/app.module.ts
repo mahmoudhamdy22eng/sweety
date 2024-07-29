@@ -96,6 +96,7 @@ import { UpdateproductComponent } from './admin/updateproduct/updateproduct.comp
 import { SuccessmodalComponent } from './admin/successmodal/successmodal.component';
 import { AuthInterceptor } from './auth-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CategoryFilterPipe } from './category-filter.pipe';
 
 
 @NgModule({
@@ -184,6 +185,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     NewproductComponent,
     UpdateproductComponent,
     SuccessmodalComponent,
+    CategoryFilterPipe,
+    
   ],
   imports: [
     BrowserModule,
