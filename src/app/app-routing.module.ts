@@ -71,6 +71,7 @@ import { BuffetsComponent } from './buffets/buffets.component';
 import { NewproductComponent } from './admin/newproduct/newproduct.component';
 import { UpdateproductComponent } from './admin/updateproduct/updateproduct.component';
 import { SuccessmodalComponent } from './admin/successmodal/successmodal.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
@@ -219,6 +220,7 @@ const routes: Routes = [
     {
       path: 'admin',
       component: AdminComponent,
+      // canActivate: [AdminGuard],
       children: [
         { path: 'manage-products', component: ManageProductsComponent },
         { path: 'newproduct', component: NewproductComponent },

@@ -63,14 +63,17 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe(
-        () => this.router.navigate(['/auth/login']),
+        response => {
+          console.log('Registration successful:', response); // Debugging line
+          this.router.navigate(['/auth/login']);
+        },
         error => {
-          if (error.error && error.error.email && error.error.email[0] === 'The email has already been taken.') {
+          if (error.status === 400 && error.error && error.error.email && error.error.email[0] === 'The email has already been taken.') {
             this.error = 'The email has already been taken.';
           } else {
             this.error = 'Registration failed. Please try again.';
           }
-          console.error(error);
+          console.error('Registration error:', error); // Debugging line
         }
       );
     } else {
