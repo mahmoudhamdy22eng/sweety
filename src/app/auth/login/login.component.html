@@ -22,7 +22,7 @@
                   </p>
                   <form
                     class="mx-1 mx-md-4 form"
-                    (ngSubmit)="login()"
+                    [formGroup]="loginForm" (ngSubmit)="onSubmit()"
                   >
                     <div class="d-flex flex-row align-items-center mb-4 form-group">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -30,8 +30,7 @@
                         <input
                           type="email"
                           id="email"
-                          class="form-control"
-                          [(ngModel)]="credentials.email"
+                          formControlName="email"
                           name="email"
                           required
                         />
@@ -44,14 +43,21 @@
                         <input
                           type="password"
                           id="password"
-                          class="form-control"
-                          [(ngModel)]="credentials.password"
+                          formControlName="password"
                           name="password"
                           required
                         />
                         <label class="form-label" for="password">Password</label>
                       </div>
                     </div>
+                    <!-- Remember me -->
+                    <div class="d-flex flex-row align-items-center mb-4 form-group">
+                      <input class="form-check-input me-2" type="checkbox" id="remember_me" formControlName="remember_me" />
+                      <label class="form-check-label" for="remember_me">
+                        Remember Me
+                      </label>
+                    </div>
+                    <!-- Error -->
                     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="form-check mb-0">
@@ -61,6 +67,7 @@
                         Forgot Password?
                       </a>
                     </div>
+                    <!-- Submit -->
                     <div class="text-center text-lg-start mt-4 pt-2">
                       <button
                         type="submit"

@@ -23,7 +23,9 @@ export class FooterComponent {
         this.showHeaderFooter =
           ![
             '/admin',
+            '/auth',
             '/page-not-found',
+            
           ].some((route) => event.url.startsWith(route));
       }
     });

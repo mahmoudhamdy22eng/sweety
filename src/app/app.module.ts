@@ -94,6 +94,9 @@ import { BuffetsComponent } from './buffets/buffets.component';
 import { NewproductComponent } from './admin/newproduct/newproduct.component';
 import { UpdateproductComponent } from './admin/updateproduct/updateproduct.component';
 import { SuccessmodalComponent } from './admin/successmodal/successmodal.component';
+import { AuthInterceptor } from './auth-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -193,7 +196,12 @@ import { SuccessmodalComponent } from './admin/successmodal/successmodal.compone
     MatButtonModule,   
     
   ],
-  providers: [ProductService, CartService, CheckoutService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    ProductService,
+    CartService,
+    CheckoutService
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
   public showHeaderFooter = true;
   public underline = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   menuItems = [
     {
@@ -65,6 +66,7 @@ export class HeaderComponent implements OnInit {
         this.showHeaderFooter =
           ![
             '/admin',
+            '/auth',
             '/page-not-found',
             
 
@@ -75,6 +77,15 @@ export class HeaderComponent implements OnInit {
 
   get showHeader(): boolean {
     return this.showHeaderFooter;
+  }
+
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 }
 

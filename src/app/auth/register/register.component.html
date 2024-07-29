@@ -13,8 +13,7 @@
                   </p>
                   <form
                     class="mx-1 mx-md-4 form"
-                    [formGroup]="form"
-                    (ngSubmit)="register()"
+                    [formGroup]="registerForm" (ngSubmit)="onSubmit()"
                   >
                     <!-- Name -->
                     <div
@@ -146,16 +145,16 @@
 
                     <!-- Confirm Password -->
                     <div
-                      *ngIf="f['confirmp'].invalid && f['confirmp'].touched"
+                      *ngIf="f['password_confirmation'].invalid && f['password_confirmation'].touched"
                       style="color: red"
                       class="msgerror"
                     >
-                      <div *ngIf="f['confirmp'].errors?.['required']">
+                      <div *ngIf="f['password_confirmation'].errors?.['required']">
                         <small>Confirm your Password</small>
                       </div>
                     </div>
                     <div
-                      *ngIf="form.errors?.['mustMatch'] && f['confirmp'].touched"
+                      *ngIf="registerForm.errors?.['mustMatch'] && f['password_confirmation'].touched"
                     >
                       <small style="color: red">Passwords do not match</small>
                     </div>
@@ -169,12 +168,12 @@
                       >
                         <input
                           type="password"
-                          id="confirmp"
-                          name="confirmp"
+                          id="password_confirmation"
+                          name="password_confirmation"
                           class="form-control"
-                          formControlName="confirmp"
+                          formControlName="password_confirmation"
                         />
-                        <label class="form-label" for="confirmp"
+                        <label class="form-label" for="password_confirmation"
                           >Repeat your password</label
                         >
                       </div>
@@ -197,7 +196,7 @@
                         class="form-check-input me-2"
                         type="checkbox"
                         id="exampleCheck1"
-                        formControlName="cbox"
+                        formControlName="cbox"                        
                       />
                       <label class="form-check-label" for="exampleCheck1">
                         I agree all statements in
@@ -215,7 +214,7 @@
                     >
                       <button
                         type="submit"
-                        [disabled]="form.invalid"
+                        [disabled]="registerForm.invalid"
                         data-mdb-button-init
                         data-mdb-ripple-init
                         class="btn btn-primary btn-lg"
