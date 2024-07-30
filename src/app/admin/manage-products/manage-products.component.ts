@@ -63,6 +63,13 @@ export class ManageProductsComponent {
     return atob(encodedId);
   }
 
+  getSweetsImageUrl(image: string): string {
+    return `http://localhost:8000/storage/${image}`;
+  }
+  getSnacksImageUrl(image: string): string {
+    return `http://localhost:8000/storage/${image}`;
+  }
+
   // Function to delete a product
   toggleProduct(productId: number): void {
     const product = this.products.find((product: any) => product.id === productId);

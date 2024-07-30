@@ -72,6 +72,8 @@ import { NewproductComponent } from './admin/newproduct/newproduct.component';
 import { UpdateproductComponent } from './admin/updateproduct/updateproduct.component';
 import { SuccessmodalComponent } from './admin/successmodal/successmodal.component';
 import { AdminGuard } from './guards/admin.guard';
+import { NewsweetComponent } from './admin/newsweet/newsweet.component';
+import { NewsnackComponent } from './admin/newsnack/newsnack.component';
 
 
 const routes: Routes = [
@@ -223,6 +225,8 @@ const routes: Routes = [
       // canActivate: [AdminGuard],
       children: [
         { path: 'manage-products', component: ManageProductsComponent },
+        { path: 'newsweet', component: NewsweetComponent },
+        { path: 'newsnack', component: NewsnackComponent },
         { path: 'newproduct', component: NewproductComponent },
         { path: 'updateproduct/:id', component: UpdateproductComponent },
         { path: 'successmodal', component: SuccessmodalComponent },

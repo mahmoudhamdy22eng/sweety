@@ -97,6 +97,8 @@ import { SuccessmodalComponent } from './admin/successmodal/successmodal.compone
 import { AuthInterceptor } from './auth-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CategoryFilterPipe } from './category-filter.pipe';
+import { NewsweetComponent } from './admin/newsweet/newsweet.component';
+import { NewsnackComponent } from './admin/newsnack/newsnack.component';
 
 
 @NgModule({
@@ -186,6 +188,8 @@ import { CategoryFilterPipe } from './category-filter.pipe';
     UpdateproductComponent,
     SuccessmodalComponent,
     CategoryFilterPipe,
+    NewsweetComponent,
+    NewsnackComponent,
     
   ],
   imports: [

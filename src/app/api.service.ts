@@ -20,6 +20,12 @@ export class ApiService {
   addProduct(product: Product): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/products`, product);
   }
+  addSweet(productData: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/products`, productData);
+  }
+  addSnack(productData: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/products`, productData);
+  }
   updateProduct(productId: number, product: Product): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/products/${productId}`, product);
   }
