@@ -98,6 +98,9 @@ export class CatalogComponent implements OnInit {
 
 
 
+  getProducts(image: string): string {
+    return `http://localhost:8000/storage/${image}`;
+  }
   
 
   sortProducts(sortOption: string): void {

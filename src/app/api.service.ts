@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
@@ -17,6 +17,7 @@ export class ApiService {
   getProducts(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/products`);
   }
+  
   addProduct(product: Product): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/products`, product);
   }
@@ -26,9 +27,16 @@ export class ApiService {
   addSnack(productData: FormData): Observable<any> {
     return this.http.post(`${this.apiUrl}/products`, productData);
   }
-  updateProduct(productId: number, product: Product): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/products/${productId}`, product);
+  updateProduct(productId: number, productData: FormData): Observable<any> {
+    console.log(productData, productId);
+    const headers=new HttpHeaders()
+    headers.append("content-type","multipart/form-data") 
+    return this.http.post<[]>(`${this.apiUrl}/products/${productId}`, productData,{headers:headers});
   }
+  updateSweet(productId: number, productData: FormData): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updatesweet/${productId}`, productData);
+  }
+  
   getProductById(productId: number): Observable<any> { // New method
     return this.http.get<any>(`${this.apiUrl}/products/${productId}`);
   }
@@ -37,6 +45,19 @@ export class ApiService {
   getProductCategories(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/productcategories`);
   }
+
+  // IsLoggedIn(){
+  //   return !!localStorage.getItem('user-data-login');
+  // }
+
+  // roleAs:any;
+  // getRole(){
+  //   var user_data:any = localStorage.getItem('user-data-login');
+  //   user_data = JSON.parse(user_data)
+  //   this.roleAs = user_data['user_type'];
+  //   console.log(this.roleAs)
+  //   return this.roleAs;
+  // }
 
   
 
@@ -58,18 +79,7 @@ export class ApiService {
   posts: any;
 
 
-  IsLoggedIn(){
-    return !!localStorage.getItem('user-data-login');
-  }
-
-  roleAs:any;
-  getRole(){
-    var user_data:any = localStorage.getItem('user-data-login');
-    user_data = JSON.parse(user_data)
-    this.roleAs = user_data['user_type'];
-    console.log(this.roleAs)
-    return this.roleAs;
-  }
+  
   get_pets(cond:any){
   return  this.http.get<[]>(this.baseURL+"/php/api/petstore/pets/GETpet.php?cond="+cond);
   }

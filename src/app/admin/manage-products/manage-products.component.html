@@ -96,7 +96,7 @@
             <td class="text-center">
               <div class="btn-group-sm btn-group" role="group">
                 <a [routerLink]="['/admin/updateproduct', product.id]" 
-                   class="btn-shadow btn btn-primary">Update</a>
+                  class="btn-shadow btn btn-primary">Update</a>
                 <button class="btn-shadow btn btn-danger" (click)="toggleProduct(product.id)">
                   {{product.is_deleted === 0 ? 'Remove' : 'Restore'}}
                 </button>

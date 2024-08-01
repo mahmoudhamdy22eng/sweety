@@ -62,17 +62,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.showHeaderFooter =
-          ![
-            '/admin',
-            '/auth',
-            '/page-not-found',
-            
-
-          ].some((route) => event.url.startsWith(route));
+      // if (event instanceof NavigationEnd) {
+        const url = this.router.url;
+        this.showHeaderFooter = !(
+          url === '/admin' ||
+          url === '/admin/manage-products' ||
+          url === '/auth' ||
+          url === '/page-not-found'
+        );
       }
-    });
+    );
   }
 
   get showHeader(): boolean {

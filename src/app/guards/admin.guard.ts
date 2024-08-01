@@ -9,9 +9,7 @@ export class AdminGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    const currentUser = this.authService.getCurrentUser();
     const role = this.authService.getRole();
-    console.log('Current User:', currentUser); // Debugging line
     console.log('User Role:', role); // Debugging line
 
     if (this.authService.isLoggedIn() && role === 'admin') {
@@ -23,4 +21,5 @@ export class AdminGuard implements CanActivate {
       return false;
     }
   }
+
 }

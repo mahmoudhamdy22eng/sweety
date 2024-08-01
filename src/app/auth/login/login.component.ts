@@ -33,7 +33,14 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
-        () => this.router.navigate(['/']),
+        () => {
+          const role = this.authService.getRole();
+          if (role === 'admin') {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/']); // Change this to your default user route
+          }
+        },
         error => {
           if (error.status === 401) {
             this.error = 'Invalid credentials';

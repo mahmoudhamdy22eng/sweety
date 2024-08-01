@@ -1,76 +1,85 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-// import {jwtDecode} from 'jwt-decode';
-import { JwtPayload, jwtDecode as jwt_decode } from 'jwt-decode';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
 
-interface DecodedToken extends JwtPayload {
+interface User {
+  user_id: number;
+  name: string;
+  email: string;
+  phone: string;
   user_type: string;
-  // Add other properties from the token payload if needed
+  is_admin: boolean;
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
-  
-  private apiUrl = 'http://localhost:8000/api';
+  private baseUrl = 'http://localhost:8000/api'; // Update with your Laravel API base URL
+  private currentUserSubject: BehaviorSubject<User | null>;
+  public currentUser: Observable<User | null>;
 
-  constructor(private http: HttpClient, private router: Router) {}
-
-  getCurrentUser(): DecodedToken | null {
-    const token = this.getToken();
-    if (token) {
-      return jwt_decode<DecodedToken>(token);
-    }
-    return null;
+  constructor(private http: HttpClient) {
+    // Initialize currentUserSubject with data from localStorage if available
+    this.currentUserSubject = new BehaviorSubject<User | null>(JSON.parse(localStorage.getItem('currentUser')!));
+    this.currentUser = this.currentUserSubject.asObservable();
   }
-  getRole(): string | null {
-    const currentUser = this.getCurrentUser();
-    return currentUser ? currentUser.user_type : null;
-  }
-  
 
   register(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user).pipe(
+    return this.http.post(`${this.baseUrl}/register`, user).pipe(
       tap((response: any) => {
         localStorage.setItem('token', response.token);
       })
     );
   }
 
-  login(credentials: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
-      tap((response: any) => {
-        localStorage.setItem('token', response.token);
-      })
-    );
+  // Getter to access the current value of the currentUserSubject
+  public get currentUserValue(): User | null {
+    return this.currentUserSubject.value;
   }
 
+  // Method to handle user login
+  login(credentials: {email: string, password: string}): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/login`,credentials)
+      .pipe(tap((response: any) => {
+        // On successful login, store user details and JWT token in local storage
+        if (response.status) {
+          localStorage.setItem('currentUser', JSON.stringify(response.user));
+          localStorage.setItem('token', response.token);
+          this.currentUserSubject.next(response.user);
+        }
+      }));
+  }
+
+  // Method to handle user logout
   logout(): void {
-    this.http.post(`${this.apiUrl}/logout`, {}).subscribe(() => {
-      localStorage.removeItem('token');
-      this.router.navigate(['/']);
-    });
+    // Remove user data from local storage
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
+    this.currentUserSubject.next(null);
   }
 
+  // Method to get the current user's role
+  getRole(): string | null {
+    return this.currentUserValue?.user_type || null;
+  }
+
+  // Method to check if a user is logged in
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return this.currentUserValue !== null;
+  }
+
+  // Method to get the current user's information
+  getCurrentUser(): User | null {
+    return this.currentUserValue;
+  }
+
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/forgot-password`, { email });
   }
 
   getToken(): string | null {
     return localStorage.getItem('token');
   }
-
-  resendVerificationEmail(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/email/resend`, {});
-  }
-
-
-  forgotPassword(email: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/forgot-password`, { email });
-  }
 }
-

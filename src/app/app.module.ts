@@ -99,6 +99,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CategoryFilterPipe } from './category-filter.pipe';
 import { NewsweetComponent } from './admin/newsweet/newsweet.component';
 import { NewsnackComponent } from './admin/newsnack/newsnack.component';
+import { UpdatesweetComponent } from './admin/updatesweet/updatesweet.component';
 
 
 @NgModule({
@@ -190,6 +191,7 @@ import { NewsnackComponent } from './admin/newsnack/newsnack.component';
     CategoryFilterPipe,
     NewsweetComponent,
     NewsnackComponent,
+    UpdatesweetComponent,
     
   ],
   imports: [

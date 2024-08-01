@@ -74,6 +74,7 @@ import { SuccessmodalComponent } from './admin/successmodal/successmodal.compone
 import { AdminGuard } from './guards/admin.guard';
 import { NewsweetComponent } from './admin/newsweet/newsweet.component';
 import { NewsnackComponent } from './admin/newsnack/newsnack.component';
+import { UpdatesweetComponent } from './admin/updatesweet/updatesweet.component';
 
 
 const routes: Routes = [
@@ -222,10 +223,11 @@ const routes: Routes = [
     {
       path: 'admin',
       component: AdminComponent,
-      // canActivate: [AdminGuard],
+      canActivate: [AdminGuard],
       children: [
         { path: 'manage-products', component: ManageProductsComponent },
         { path: 'newsweet', component: NewsweetComponent },
+        { path: 'updatesweet/:id', component: UpdatesweetComponent },
         { path: 'newsnack', component: NewsnackComponent },
         { path: 'newproduct', component: NewproductComponent },
         { path: 'updateproduct/:id', component: UpdateproductComponent },

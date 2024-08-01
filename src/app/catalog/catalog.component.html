@@ -104,7 +104,7 @@ window.addEventListener('click', function(e) {
       <div class="card product-card h-100 shadow-sm">
         <div class="card-img-wrapper">
           <img
-            [src]="product.image"
+            [src]="getProducts(product.image)"
             class="card-img-top"
             alt="{{ product.name }}"
           />

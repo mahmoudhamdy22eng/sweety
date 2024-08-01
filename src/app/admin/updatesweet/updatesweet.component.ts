@@ -6,14 +6,14 @@ import { SuccessmodalComponent } from '../successmodal/successmodal.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-updateproduct',
-  templateUrl: './updateproduct.component.html',
-  styleUrls: ['./updateproduct.component.css']
+  selector: 'app-updatesweet',
+  templateUrl: './updatesweet.component.html',
+  styleUrls: ['./updatesweet.component.css']
 })
-export class UpdateproductComponent implements OnInit {
+export class UpdatesweetComponent implements OnInit {
 
   product: Product = {
-    name: 'ahmed',
+    name: '',
     description: '',
     price: 0,
     QuantityAvailable: 0,
@@ -47,10 +47,7 @@ export class UpdateproductComponent implements OnInit {
     }
   }
 
-  updateProduct(): void {
-    // Log the product object to ensure it contains the correct data
-    console.log('Product data:', this.product);
-
+  updateSweet(): void {
     const formData = new FormData();
     formData.append('name', this.product.name);
     formData.append('description', this.product.description);
@@ -61,21 +58,14 @@ export class UpdateproductComponent implements OnInit {
     formData.append('IsCustomizable', this.product.IsCustomizable ? '1' : '0');
     formData.append('HasNutritionalInfo', this.product.HasNutritionalInfo ? '1' : '0');
     formData.append('vendor', this.product.vendor);
-    formData.append('_method', 'PUT');
-
     if (this.selectedFile) {
       formData.append('image', this.selectedFile, this.selectedFile.name);
     } else {
+      // Append an empty value if there's no new file selected
       formData.append('image', this.product.image);
     }
 
-    // Log the FormData object to see if it contains the correct data
-    console.log('Form Data to be sent:');
-    formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
-    });
-
-    this.apiService.updateProduct(this.productId, formData).subscribe(response => {
+    this.apiService.updateSweet(this.productId, formData).subscribe(response => {
       console.log('Product updated', response);
       this.openSuccessModal();
     }, error => {

@@ -29,6 +29,9 @@
             <!-- promotions \ coupons \ notifications -->
             <a class="nav-link" routerLink="/admin/features" routerLinkActive="active">Features</a> 
           </li>
+          <li class="nav-item" *ngIf="isLoggedIn()">
+            <a class="nav-link" (click)="logout()" routerLinkActive="active" style="cursor: pointer;">Logout</a>
+          </li>
         </ul>
       </div>
     </div>
