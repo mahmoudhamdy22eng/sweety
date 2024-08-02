@@ -69,18 +69,22 @@ export class ManageProductsComponent {
   getSnacksImageUrl(image: string): string {
     return `http://localhost:8000/storage/${image}`;
   }
+  getDrinksImageUrl(image: string): string {
+    return `http://localhost:8000/storage/${image}`;
+  }
+  getIceCreamImageUrl(image: string): string {
+    return `http://localhost:8000/storage/${image}`;
+  }
 
   // Function to delete a product
   toggleProduct(productId: number): void {
     const product = this.products.find((product: any) => product.id === productId);
     if (product) {
-      const isDeletedProduct = product.is_deleted === 1 ? 0 : 1;
-
-      this.api.updateProduct(productId, { ...product, is_deleted: isDeletedProduct }).subscribe({
+      this.api.toggleProductStatus(productId).subscribe({
         next: (data: any) => {
           const productIndex = this.products.findIndex((product: any) => product.id === productId);
           if (productIndex !== -1) {
-            this.products[productIndex].is_deleted = isDeletedProduct;
+            this.products[productIndex].is_deleted = data.product.is_deleted;
           } else {
             console.error('Product not found in local products array after API update.');
           }
@@ -91,6 +95,8 @@ export class ManageProductsComponent {
       });
     }
   }
+  
+  
 
   toggleHasNutritionalInfo(productId: number): void {
     const product = this.products.find((product: any) => product.id === productId);

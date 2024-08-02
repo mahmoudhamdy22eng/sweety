@@ -10,9 +10,9 @@
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">{{ product.price | currency }}</p>
-          <a href="#" class="btn btn-primary mt-auto"
-            ><i class="fas fa-cart-plus"></i> Add to Cart</a
-          >
+          <button class="btn btn-primary mt-auto" (click)="addToCart(product.id)">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
         </div>
       </div>
     </div>

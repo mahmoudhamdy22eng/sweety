@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SuccesscartComponent } from 'src/app/catalog/successcart/successcart.component';
 
 @Component({
   selector: 'app-catalog',
@@ -10,7 +13,12 @@ export class CatalogComponent implements OnInit {
 
   products: any[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private dialog: MatDialog
+  ) {}
+
   ngOnInit(): void {
     this.loadProducts();
   }
@@ -25,110 +33,28 @@ export class CatalogComponent implements OnInit {
       }
     );
   }
-  
-  // products: {
-  //   image: string;
-  //   name: string;
-  //   description: string;
-  //   price: number;
-  // }[] = [
-  //   {
-  //     image: 'assets/images/candy1.jpg',
-  //     name: 'Candy Delight',
-  //     description: 'A delightful mix of fruity candies.',
-  //     price: 9.99,
-  //   },
-  //   {
-  //     image: 'assets/images/chocolate1.jpg',
-  //     name: 'Chocolate Heaven',
-  //     description: 'Rich and creamy chocolates for every occasion.',
-  //     price: 14.99,
-  //   },
-  //   {
-  //     image: 'assets/images/candy2.jpg',
-  //     name: 'Sour Surprise',
-  //     description: 'A tangy twist on classic sweets.',
-  //     price: 7.99,
-  //   },
-  //   {
-  //     image: 'assets/images/candy3.jpg',
-  //     name: 'Gummy Bears',
-  //     description: 'Colorful and chewy gummy bears.',
-  //     price: 5.99,
-  //   },
-  //   {
-  //     image: 'assets/images/chocolate2.jpg',
-  //     name: 'Dark Chocolate Bites',
-  //     description: 'Decadent dark chocolate bites.',
-  //     price: 12.99,
-  //   },
-  //   {
-  //     image: 'assets/images/candy4.jpg',
-  //     name: 'Lollipop Wonderland',
-  //     description: 'A variety of colorful lollipops.',
-  //     price: 6.99,
-  //   },
-  //   {
-  //     image: 'assets/images/candy5.jpg',
-  //     name: 'Marshmallow Treats',
-  //     description: 'Soft and fluffy marshmallows.',
-  //     price: 4.99,
-  //   },
-  //   {
-  //     image: 'assets/images/chocolate3.jpg',
-  //     name: 'Milk Chocolate Bars',
-  //     description: 'Creamy milk chocolate bars.',
-  //     price: 11.99,
-  //   },
-  //   {
-  //     image: 'assets/images/candy6.jpg',
-  //     name: 'Hard Candy Mix',
-  //     description: 'A mix of hard candies.',
-  //     price: 8.99,
-  //   },
-  //   // Add more products as needed
-  // ];
 
+  addToCart(productId: number): void {
+    if (!this.cartService.isAuthenticated()) {
+      this.cartService.redirectToLogin();
+      return;
+    }
 
-  // // products: any[] = [];
-  filteredProducts: any[] = [];
-  selectedCategory: string = '';
-  selectedSortOption: string = '';
-
-
-
+    this.cartService.addToCart(productId).subscribe(
+      () => {
+        // Open success modal
+        this.dialog.open(SuccesscartComponent, {
+          data: { message: 'Product added to cart successfully!' },
+        });
+      },
+      (error) => {
+        console.error('Error adding to cart:', error);
+        // Handle error, possibly show a message to the user
+      }
+    );
+  }
 
   getProducts(image: string): string {
     return `http://localhost:8000/storage/${image}`;
   }
-  
-
-  sortProducts(sortOption: string): void {
-    this.selectedSortOption = sortOption;
-    this.applySorting();
-  }
-  
-
-  
-
-  private applySorting(): void {
-    if (this.selectedSortOption) {
-      switch (this.selectedSortOption) {
-        case 'Price: Low to High':
-          this.filteredProducts.sort((a, b) => a.price - b.price);
-          break;
-        case 'Price: High to Low':
-          this.filteredProducts.sort((a, b) => b.price - a.price);
-          break;
-        case 'Name: A to Z':
-          this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-          break;
-        case 'Name: Z to A':
-          this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
-          break;
-      }
-    }
-  }
-
-  
 }

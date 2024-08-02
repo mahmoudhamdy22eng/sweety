@@ -65,9 +65,9 @@ export class HeaderComponent implements OnInit {
       // if (event instanceof NavigationEnd) {
         const url = this.router.url;
         this.showHeaderFooter = !(
-          url === '/admin' ||
-          url === '/admin/manage-products' ||
+          url.startsWith('/admin') ||
           url === '/auth' ||
+          url === '**' ||
           url === '/page-not-found'
         );
       }

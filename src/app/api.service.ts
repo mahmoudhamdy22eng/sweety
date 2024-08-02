@@ -33,6 +33,22 @@ export class ApiService {
     headers.append("content-type","multipart/form-data") 
     return this.http.post<[]>(`${this.apiUrl}/products/${productId}`, productData,{headers:headers});
   }
+  toggleProductStatus(productId: number): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/products/${productId}/toggle`, {}, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+  deleteProduct(productId: number): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/products/${productId}/toggle`, {}, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+  
+
   updateSweet(productId: number, productData: FormData): Observable<any> {
     return this.http.put(`${this.apiUrl}/updatesweet/${productId}`, productData);
   }

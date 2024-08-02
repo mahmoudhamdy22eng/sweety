@@ -75,6 +75,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { NewsweetComponent } from './admin/newsweet/newsweet.component';
 import { NewsnackComponent } from './admin/newsnack/newsnack.component';
 import { UpdatesweetComponent } from './admin/updatesweet/updatesweet.component';
+import { SuccesscartComponent } from './catalog/successcart/successcart.component';
 
 
 const routes: Routes = [
@@ -89,9 +90,12 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'catalog',
+    path: 'products',
     component: CatalogComponent,
-    children: [{ path: '', component: ProductListComponent }],
+    children: [
+      { path: '', component: ProductListComponent },
+      { path: 'successcart', component: SuccesscartComponent },
+    ],
   },
 
   { path: 'product/:id', component: ProductDetailComponent },

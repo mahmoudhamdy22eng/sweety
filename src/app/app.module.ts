@@ -100,6 +100,7 @@ import { CategoryFilterPipe } from './category-filter.pipe';
 import { NewsweetComponent } from './admin/newsweet/newsweet.component';
 import { NewsnackComponent } from './admin/newsnack/newsnack.component';
 import { UpdatesweetComponent } from './admin/updatesweet/updatesweet.component';
+import { SuccesscartComponent } from './catalog/successcart/successcart.component';
 
 
 @NgModule({
@@ -192,6 +193,7 @@ import { UpdatesweetComponent } from './admin/updatesweet/updatesweet.component'
     NewsweetComponent,
     NewsnackComponent,
     UpdatesweetComponent,
+    SuccesscartComponent,
     
   ],
   imports: [

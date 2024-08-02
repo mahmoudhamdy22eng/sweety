@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 interface User {
   user_id: number;
@@ -20,7 +21,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     // Initialize currentUserSubject with data from localStorage if available
     this.currentUserSubject = new BehaviorSubject<User | null>(JSON.parse(localStorage.getItem('currentUser')!));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -68,6 +69,12 @@ export class AuthService {
   // Method to check if a user is logged in
   isLoggedIn(): boolean {
     return this.currentUserValue !== null;
+  }
+  // isLoggedIn(): boolean {
+  //   return !!localStorage.getItem('token'); // Example token check
+  // }
+  redirectToLogin(): void {
+    this.router.navigate(['/auth/login']);
   }
 
   // Method to get the current user's information

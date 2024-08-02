@@ -22,10 +22,9 @@ export class FooterComponent {
       // if (event instanceof NavigationEnd) {
         const url = this.router.url;
         this.showHeaderFooter = !(
-          url === '/admin' ||
-          url === '/admin/manage-products' ||
+          url.startsWith('/admin') ||
           url === '/auth' ||
-          url === '/page-not-found'
+          url === '/page-not-found' 
         );
       }
     );
