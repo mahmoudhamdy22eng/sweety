@@ -4,13 +4,20 @@
     <div class="card-body">
       <form>
         <div class="form-check" *ngFor="let method of deliveryMethods">
-          <input class="form-check-input" type="radio" name="deliveryMethod"
-                 id="{{method}}" [(ngModel)]="selectedMethod"
-                 (change)="updateDeliveryMethod(method)" [value]="method"/>
-          <label class="form-check-label" for="{{method}}">{{ method }}</label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="deliveryMethods"
+            id="{{method.name}}"
+            [(ngModel)]="selectedMethod"
+            (change)="updateDeliveryMethod(method)"
+            [value]="method"
+          />
+          <label class="form-check-label" for="{{method.name}}">
+            {{ method.name }}
+          </label>
         </div>
       </form>
     </div>
   </div>
 </div>
-

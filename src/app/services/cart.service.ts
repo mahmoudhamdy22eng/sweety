@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -78,16 +78,19 @@ export class CartService {
     );
   }
 
-  clearCart(): void {
+  clearCart(): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.getToken()}`,
     });
 
-    this.http.delete<any[]>(`${this.apiUrl}/clear`, { headers }).subscribe(() => {
-      this.cartItems.next([]);
-      this.cartTotal.next(0);
-    });
+    return this.http.delete<any>(`${this.apiUrl}/clear`, { headers }).pipe(
+      finalize(() => {
+        this.cartItems.next([]); // Clear cart items locally
+        this.cartTotal.next(0);  // Reset cart total locally
+      })
+    );
   }
+
 
   private updateCartTotal(): void {
     const currentItems = this.cartItems.value;

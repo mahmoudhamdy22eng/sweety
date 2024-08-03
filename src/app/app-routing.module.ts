@@ -76,6 +76,8 @@ import { NewsweetComponent } from './admin/newsweet/newsweet.component';
 import { NewsnackComponent } from './admin/newsnack/newsnack.component';
 import { UpdatesweetComponent } from './admin/updatesweet/updatesweet.component';
 import { SuccesscartComponent } from './catalog/successcart/successcart.component';
+import { FormadminComponent } from './admin/formadmin/formadmin.component';
+import { FormuserComponent } from './admin/formuser/formuser.component';
 
 
 const routes: Routes = [
@@ -241,6 +243,10 @@ const routes: Routes = [
         {path:'features', component: FeaturesComponent},
         { path: 'manage-orders', component: ManageOrdersComponent },
         { path: 'manage-users', component: ManageUsersComponent },
+        { path: 'admins/new', component: FormadminComponent },
+        { path: 'admins/edit/:id', component: FormadminComponent,},
+        { path: 'users/new', component: FormuserComponent },
+        { path: 'users/edit/:id', component: FormuserComponent },
       ],
   },
   {

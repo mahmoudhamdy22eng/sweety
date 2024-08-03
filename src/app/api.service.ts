@@ -62,6 +62,84 @@ export class ApiService {
     return this.http.get<any>(`${this.apiUrl}/productcategories`);
   }
 
+
+
+
+  // Fetch all users
+  getUsers(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/users`);
+  }
+
+  // Update a user
+  updateUser(userId: number, updateData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/users/${userId}`, updateData);
+  }
+
+  // Get a specific user by ID
+  getUser(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/users/${id}`);
+  }
+
+  // Add a new user
+  addUser(userData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/users`, userData);
+  }
+
+  // Update an existing user
+  // updateUser(id: number, userData: any): Observable<any> {
+  //   return this.http.put(`${this.apiUrl}/users/${id}`, userData);
+  // }
+
+  // Delete a user
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/users/${id}`);
+  }
+
+  // Toggle user status (activate/deactivate user)
+  toggleUser(id: number, toggleData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/users/${id}`, toggleData);
+  }
+  // Toggle user status
+  toggleUserStatus(userId: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/users/${userId}/toggle-status`, {});
+  }
+
+
+  getAdmin(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/admins/${id}`);
+  }
+  updateAdmin(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/admins/${id}`, data);
+  }
+  addAdmin(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/admins`, data);
+  }
+  getAdmins(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/admins`);
+  }
+  // getUsers(): Observable<any[]> {
+  //   return this.http.get<any[]>(`${this.apiUrl}/users`);
+  // }
+  getSuppliers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/suppliers`);
+  }
+  addSupplier(supplier: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/suppliers`, supplier);
+  }
+  toggleAdmin(adminId: number, data: { is_deleted: number }): Observable<any> {
+    return this.http.put(`${this.apiUrl}/admins/${adminId}`, data);
+  }
+  // toggleUser(userId: number, data: { is_deleted: number }): Observable<any> {
+  //   return this.http.put(`${this.apiUrl}/users/${userId}`, data);
+  // }
+  toggleSupplier(
+    supplierId: number,
+    data: { is_deleted: number }
+  ): Observable<any> {
+    return this.http.put(`${this.apiUrl}/suppliers/${supplierId}`, data);
+  }
+
+
   // IsLoggedIn(){
   //   return !!localStorage.getItem('user-data-login');
   // }

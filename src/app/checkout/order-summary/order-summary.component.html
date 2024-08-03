@@ -15,17 +15,16 @@
       <h5 class="card-title">Shipping Information</h5>
       <p>
         {{ shippingInfo.name }}, {{ shippingInfo.address }},
-        {{ shippingInfo.city }}, {{ shippingInfo.postalCode }},
+        {{ shippingInfo.city }}, {{ shippingInfo.postal_code }},
         {{ shippingInfo.country }}
       </p>
       <h5 class="card-title">Delivery Method</h5>
-      <p>{{ deliveryMethod }}</p>
+      <p>{{ deliveryMethods.shipping_method }} ({{ deliveryMethods.cost | currency }})</p>
       <h5 class="card-title">Payment Method</h5>
       <p>{{ paymentMethod }}</p>
       <h5 class="card-title">Total</h5>
       <p>{{ total | currency }}</p>
-      <button class="btn btn-primary mt-2"
-      style="background-color: #0d47a1; border: none" (click)="placeOrder()">
+      <button class="btn btn-primary mt-2" style="background-color: #0d47a1; border: none" (click)="placeOrder()">
         Place Order
       </button>
     </div>

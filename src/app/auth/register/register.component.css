@@ -67,3 +67,25 @@
 .form-label{
   color:#0d47a1;
 }
+
+
+
+.role-selection {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.role-selection:hover {
+  transform: scale(1.05);
+}
+
+.role-selection.selected {
+  border: 3px solid #0d47a1;
+  border-radius: 10px;
+}
+
+.role-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}

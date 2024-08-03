@@ -1,31 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from 'src/app/services/account.service';
+import { AccountService } from '../../services/account.service';
+
 
 @Component({
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
-  styleUrls: ['./personal-info.component.css'],
+  styleUrls: ['./personal-info.component.css']
 })
 export class PersonalInfoComponent implements OnInit {
-  personalInfo = {
-    name: '',
-    email: '',
-    phone: '',
-  };
+  userInfo: any = {};
+  errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {
-    this.accountService.getPersonalInfo().subscribe((info) => {
-      this.personalInfo = info;
+    this.getUserInfo();
+  }
+
+  getUserInfo(): void {
+    this.accountService.getPersonalInfo().subscribe({
+      next: (data) => this.userInfo = data,
+      error: (error) => this.errorMessage = 'Error fetching user info.'
     });
   }
 
-  updatePersonalInfo(): void {
-    this.accountService
-      .updatePersonalInfo(this.personalInfo)
-      .subscribe((response) => {
-        console.log('Personal info updated successfully', response);
-      });
+  updateUserInfo(): void {
+    this.accountService.updatePersonalInfo(this.userInfo).subscribe({
+      next: (response) => {
+        this.successMessage = 'User information updated successfully.';
+        this.errorMessage = '';
+      },
+      error: (error) => {
+        this.errorMessage = 'Error updating user info.';
+        this.successMessage = '';
+      }
+    });
   }
 }

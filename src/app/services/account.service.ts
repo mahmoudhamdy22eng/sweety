@@ -6,16 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AccountService {
-  private apiUrl = 'https://api.example.com/account'; // Replace with your actual API URL
+  private apiUrl = 'http://localhost:8000/api'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 
   getPersonalInfo(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/personal-info`);
+    return this.http.get<any>(`${this.apiUrl}/user`);
   }
 
+  // updatePersonalInfo(info: any): Observable<any> {
+  //   return this.http.post<any>(`${this.apiUrl}/personal-info`, info);
+  // }
   updatePersonalInfo(info: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/personal-info`, info);
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+    return this.http.put<any>('http://localhost:8000/api/user', info, { headers });
   }
 
   getOrderHistory(): Observable<any[]> {

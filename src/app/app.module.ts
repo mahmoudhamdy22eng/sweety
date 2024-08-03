@@ -101,6 +101,10 @@ import { NewsweetComponent } from './admin/newsweet/newsweet.component';
 import { NewsnackComponent } from './admin/newsnack/newsnack.component';
 import { UpdatesweetComponent } from './admin/updatesweet/updatesweet.component';
 import { SuccesscartComponent } from './catalog/successcart/successcart.component';
+import { FormadminComponent } from './admin/formadmin/formadmin.component';
+import { FormsupplierComponent } from './admin/formsupplier/formsupplier.component';
+import { FormcustomerComponent } from './admin/formcustomer/formcustomer.component';
+import { FormuserComponent } from './admin/formuser/formuser.component';
 
 
 @NgModule({
@@ -194,6 +198,10 @@ import { SuccesscartComponent } from './catalog/successcart/successcart.componen
     NewsnackComponent,
     UpdatesweetComponent,
     SuccesscartComponent,
+    FormadminComponent,
+    FormsupplierComponent,
+    FormcustomerComponent,
+    FormuserComponent,
     
   ],
   imports: [

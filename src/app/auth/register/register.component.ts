@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   error: string | null = null;
+  selectedRole: string | null = null; // New property to track user role
 
   constructor(
     private fb: FormBuilder,
@@ -60,9 +61,19 @@ export class RegisterComponent implements OnInit {
     };
   }
 
+  selectRole(role: string): void {
+    this.selectedRole = role;
+    console.log('Selected Role:', role);
+  }
+
   onSubmit(): void {
-    if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).subscribe(
+    if (this.registerForm.valid && this.selectedRole) { // Ensure role is selected
+      const formData = {
+        ...this.registerForm.value,
+        user_type: this.selectedRole // Add user_type to form data
+      };
+
+      this.authService.register(formData).subscribe(
         response => {
           console.log('Registration successful:', response); // Debugging line
           this.router.navigate(['/auth/login']);
@@ -77,7 +88,7 @@ export class RegisterComponent implements OnInit {
         }
       );
     } else {
-      this.error = 'Please fill in all required fields correctly.';
+      this.error = 'Please fill in all required fields correctly and select a role.';
     }
   }
 }
