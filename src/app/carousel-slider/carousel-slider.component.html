@@ -20,7 +20,20 @@
     <div class="col-md-9">
       <div class="row">
         <div class="col-sm-6 col-lg-4 mb-4" *ngFor="let product of products">
-          <app-product-card [product]="product"></app-product-card>
+          <div *ngIf="products.length > 0">
+            <div  class="card h-100">
+              <img [src]="product.image" class="card-img-top" [alt]="product.title" />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">{{ product.discription }}</p>
+                <p class="card-text font-weight-bold">{{ product.price }}</p>
+                <app-product-form [productId]="[product.id]" class="mt-auto"></app-product-form>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="products.length === 0">
+            <p>No products found</p>
+          </div>
         </div>
       </div>
     </div>

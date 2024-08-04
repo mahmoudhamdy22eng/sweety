@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -11,7 +11,15 @@ export class HeaderComponent implements OnInit {
   public showHeaderFooter = true;
   public underline = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, ) {}
+
+  navigateToCart(): void {
+    // Navigate to the cart route
+    this.router.navigate(['/cart']).then(() => {
+      // Force a page reload after navigation
+      window.location.reload();
+    });
+  }
 
   menuItems = [
     {
