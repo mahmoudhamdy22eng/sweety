@@ -1,4 +1,4 @@
-<br><div class="container d-flex justify-content-between">
+<div class="container d-flex justify-content-between">
   <div class="d-flex align-items-center">
     <div class="gf-filter-trigger">
       <div class="gf-refine-toggle-mobile" tabindex="0">
@@ -9,12 +9,11 @@
     </div>
   </div>
   <div class="d-flex align-items-center">
-    
     <div class="sort-by limit-by hidden-xs">
       Show
       <select id="setLimit" class="sortby-select" (change)="setLimit($event)">
-        <option value="12">12</option>
-        <option selected value="24">24</option>
+        <option selected value="12">12</option>
+        <option value="24">24</option>
         <option value="48">48</option>
       </select>
     </div>
@@ -27,14 +26,9 @@
   </div>
 </div>
 
-
-
-
-
-
 <div class="container my-5">
   <div class="row">
-    <div *ngFor="let product of products" class="col-lg-4 col-md-6 mb-4">
+    <div *ngFor="let product of paginatedProducts" class="col-lg-4 col-md-6 mb-4">
       <div class="card product-card h-100 shadow-sm">
         <div class="card-img-wrapper">
           <img
@@ -62,3 +56,14 @@
     </div>
   </div>
 </div>
+
+<div class="pagination-controls text-center mb-4">
+  <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn btn-outline-primary">
+    <i class="fas fa-chevron-left"></i> Previous
+  </button>
+  <span class="mx-3" style="color: #007bff;">Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn btn-outline-primary">
+    Next <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+<br>

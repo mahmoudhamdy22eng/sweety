@@ -27,6 +27,7 @@
   /* color: rgb(108, 207, 243) !important; */
   background: #f0f0f0 !important;
   color: #FF6F61 !important;
+  cursor: pointer;
 }
 .nav-link2{
   margin-right: 10px;

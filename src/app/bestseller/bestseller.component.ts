@@ -12,11 +12,13 @@ import { SuccesscartComponent } from 'src/app/catalog/successcart/successcart.co
 export class BestsellerComponent {
 
   products: any[] = [];
+  paginatedProducts: any[] = [];
   currentSort: string = 'best-selling';
   currentSortLabel: string = 'Best Selling';
-  isDropdownVisible: boolean = false; // Track dropdown visibility
-
-
+  isDropdownVisible: boolean = false;
+  currentPage: number = 1;
+  productsPerPage: number = 12; // Default to 24 products per page
+  totalPages: number = 1;
 
   constructor(
     private productService: ProductService,
@@ -32,11 +34,19 @@ export class BestsellerComponent {
     this.productService.getProducts(cond).subscribe(
       data => {
         this.products = data;
+        this.totalPages = Math.ceil(this.products.length / this.productsPerPage);
+        this.setPaginatedProducts();
       },
       error => {
         console.error('Error fetching products', error);
       }
     );
+  }
+
+  setPaginatedProducts(): void {
+    const startIndex = (this.currentPage - 1) * this.productsPerPage;
+    const endIndex = startIndex + this.productsPerPage;
+    this.paginatedProducts = this.products.slice(startIndex, endIndex);
   }
 
   addToCart(productId: number): void {
@@ -47,14 +57,12 @@ export class BestsellerComponent {
 
     this.cartService.addToCart(productId).subscribe(
       () => {
-        // Open success modal
         this.dialog.open(SuccesscartComponent, {
           data: { message: 'Product added to cart successfully!' },
         });
       },
       (error) => {
         console.error('Error adding to cart:', error);
-        // Handle error, possibly show a message to the user
       }
     );
   }
@@ -84,29 +92,36 @@ export class BestsellerComponent {
       case 'created-ascending':
         this.products.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
         break;
-      // Add more cases as needed
       default:
-        this.products.sort((a, b) => a.name.localeCompare(b.name)); // Default to alphabetical sort
+        this.products.sort((a, b) => a.name.localeCompare(b.name)); 
         break;
     }
+    this.setPaginatedProducts();
   }
 
   setLimit(event: Event): void {
     const target = event.target as HTMLSelectElement;
-    const limit = Number(target.value);
-  
-    this.productService.getProducts().subscribe(
-      (data) => {
-        this.products = data.slice(0, limit); // Limit products shown
-        this.sortProducts('best-selling');
-      },
-      (error) => {
-        console.error('Error fetching products', error);
-      }
-    );
+    this.productsPerPage = Number(target.value);
+    this.totalPages = Math.ceil(this.products.length / this.productsPerPage);
+    this.currentPage = 1; 
+    this.setPaginatedProducts();
   }
 
   toggleSortDropdown(): void {
-    this.isDropdownVisible = !this.isDropdownVisible; // Toggle visibility
+    this.isDropdownVisible = !this.isDropdownVisible;
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.setPaginatedProducts();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.setPaginatedProducts();
+    }
   }
 }

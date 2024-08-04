@@ -14,9 +14,17 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService, ) {}
 
   navigateToCart(): void {
-    // Navigate to the cart route
     this.router.navigate(['/cart']).then(() => {
-      // Force a page reload after navigation
+      window.location.reload();
+    });
+  }
+  navigateToAccount(): void {
+    this.router.navigate(['/account']).then(() => {
+      window.location.reload();
+    });
+  }
+  navigateToAllProducts(): void {
+    this.router.navigate(['/products']).then(() => {
       window.location.reload();
     });
   }

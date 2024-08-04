@@ -52,7 +52,7 @@
           <a class="nav-link" routerLink="/" routerLinkActive="active" aria-current="page">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/products" routerLinkActive="active">All Products</a>
+          <a class="nav-link" (click)="navigateToAllProducts()" routerLinkActive="active">All Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/about" routerLinkActive="active">About Us</a>
@@ -64,7 +64,7 @@
           <a class="nav-link" (click)="navigateToCart()"><i class="fas fa-shopping-cart"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/account" routerLinkActive="active"><i class="fa-regular fa-user"></i></a>
+          <a class="nav-link" (click)="navigateToAccount()" routerLinkActive="active"><i class="fa-regular fa-user"></i></a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" routerLink="/auth/login" routerLinkActive="active">Login</a>
